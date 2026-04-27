@@ -1,149 +1,773 @@
-export default function PedagoArtKidsStore() {
-  const categories = [
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="PedagoArt Kids Store - Materiais pedagógicos digitais para educação infantil e ensino fundamental até o 5º ano">
+  <meta name="author" content="PedagoArt Kids Store">
+  <title>PedagoArt Kids Store | Materiais Pedagógicos Digitais</title>
+  <style>
+    /* ============================================
+       VARIÁVEIS GLOBAIS (FACILITA A MANUTENÇÃO)
+       ============================================ */
+    :root {
+      --azul-escuro: #1e3a8a;
+      --azul-principal: #2563eb;
+      --azul-claro: #3b82f6;
+      --verde-whats: #22c55e;
+      --verde-whats-hover: #16a34a;
+      --cinza-fundo: #f8fafc;
+      --cinza-texto: #475569;
+      --sombra-padrao: 0 10px 25px -5px rgba(0,0,0,0.1);
+      --sombra-flutuante: 0 20px 35px -10px rgba(0,0,0,0.15);
+      --borda-arrendondada: 1.5rem;
+      --transicao-padrao: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #fefce8 0%, #f0f9ff 50%, #fae8ff 100%);
+      color: #1e293b;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* ============================================
+       CLASSES UTILITÁRIAS
+       ============================================ */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ============================================
+       CABEÇALHO (STICKY + BLUR)
+       ============================================ */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .logo h1 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .logo p {
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #334155;
+      transition: var(--transicao-padrao);
+    }
+
+    .nav-links a:hover {
+      color: var(--azul-principal);
+    }
+
+    /* ============================================
+       SEÇÃO HERO
+       ============================================ */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      padding: 4rem 1.5rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1e40af;
+      padding: 0.5rem 1.2rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h2 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #475569;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primario {
+      background: var(--azul-principal);
+      color: white;
+      padding: 0.875rem 2rem;
+      border-radius: 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transicao-padrao);
+      box-shadow: var(--sombra-padrao);
+    }
+
+    .btn-primario:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+
+    .btn-whats {
+      background: var(--verde-whats);
+      color: white;
+      padding: 0.875rem 2rem;
+      border-radius: 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transicao-padrao);
+    }
+
+    .btn-whats:hover {
+      background: var(--verde-whats-hover);
+      transform: translateY(-2px);
+    }
+
+    .hero-imagem {
+      position: relative;
+    }
+
+    .hero-imagem img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 2rem;
+      box-shadow: var(--sombra-flutuante);
+    }
+
+    .hero-card-flutuante {
+      position: absolute;
+      bottom: -1.5rem;
+      left: -1.5rem;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 1.5rem;
+      box-shadow: var(--sombra-padrao);
+      border: 1px solid #e2e8f0;
+    }
+
+    /* ============================================
+       FILTROS DE CATEGORIAS
+       ============================================ */
+    .filtros-area {
+      text-align: center;
+      margin: 3rem 0 2rem;
+    }
+
+    .filtros-titulo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .botoes-filtro {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn-filtro {
+      background: white;
+      border: 2px solid #e2e8f0;
+      padding: 0.6rem 1.5rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transicao-padrao);
+    }
+
+    .btn-filtro.ativo {
+      background: var(--azul-principal);
+      border-color: var(--azul-principal);
+      color: white;
+    }
+
+    .btn-filtro:hover {
+      transform: translateY(-2px);
+      border-color: var(--azul-principal);
+    }
+
+    /* ============================================
+       GRADE DE PRODUTOS
+       ============================================ */
+    .catalogo {
+      background: white;
+      padding: 4rem 1.5rem;
+    }
+
+    .catalogo-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .catalogo-header h3 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .produtos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .cartao-produto {
+      background: white;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      box-shadow: var(--sombra-padrao);
+      transition: var(--transicao-padrao);
+      border: 1px solid #f1f5f9;
+    }
+
+    .cartao-produto:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--sombra-flutuante);
+    }
+
+    .produto-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .produto-info {
+      padding: 1.5rem;
+    }
+
+    .produto-titulo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin-bottom: 0.75rem;
+    }
+
+    .produto-descricao {
+      color: #64748b;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .produto-preco {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #16a34a;
+      margin-bottom: 1.5rem;
+    }
+
+    .botoes-produto {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .btn-ver {
+      background: var(--azul-principal);
+      color: white;
+      text-align: center;
+      padding: 0.75rem;
+      border-radius: 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transicao-padrao);
+    }
+
+    .btn-whats-produto {
+      background: transparent;
+      border: 2px solid var(--verde-whats);
+      color: #16a34a;
+      text-align: center;
+      padding: 0.7rem;
+      border-radius: 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transicao-padrao);
+    }
+
+    .btn-whats-produto:hover {
+      background: #f0fdf4;
+    }
+
+    /* ============================================
+       SEÇÃO BENEFÍCIOS
+       ============================================ */
+    .beneficios {
+      padding: 5rem 1.5rem;
+      background: #f1f5f9;
+    }
+
+    .beneficios h3 {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 3rem;
+    }
+
+    .beneficios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .beneficio-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 1.5rem;
+      text-align: center;
+      box-shadow: var(--sombra-padrao);
+      transition: var(--transicao-padrao);
+    }
+
+    .beneficio-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .beneficio-icone {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .beneficio-card h4 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: #1e3a8a;
+    }
+
+    /* ============================================
+       SEÇÃO CONTATO (CTA)
+       ============================================ */
+    .cta {
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      color: white;
+      padding: 5rem 1.5rem;
+      text-align: center;
+    }
+
+    .cta h3 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .cta p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-whats {
+      background: var(--verde-whats);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 1rem;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .cta-email {
+      background: white;
+      color: #1e3a8a;
+      padding: 1rem 2rem;
+      border-radius: 1rem;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    /* ============================================
+       RODAPÉ
+       ============================================ */
+    .footer {
+      background: #0f172a;
+      color: #94a3b8;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    /* ============================================
+       WHATSAPP FLUTUANTE
+       ============================================ */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--verde-whats);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--sombra-flutuante);
+      transition: var(--transicao-padrao);
+      z-index: 100;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      background: var(--verde-whats-hover);
+    }
+
+    .whatsapp-float a {
+      font-size: 2rem;
+      text-decoration: none;
+    }
+
+    /* ============================================
+       MODAL DE COMPRA
+       ============================================ */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-conteudo {
+      background: white;
+      max-width: 500px;
+      width: 90%;
+      padding: 2rem;
+      border-radius: 1.5rem;
+      text-align: center;
+    }
+
+    /* ============================================
+       RESPONSIVIDADE
+       ============================================ */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero h2 {
+        font-size: 2rem;
+      }
+      .nav-links {
+        display: none;
+      }
+      .produtos-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================
+     CABEÇALHO
+     ============================================ -->
+<header class="header">
+  <div class="header-container">
+    <div class="logo">
+      <h1>🎨 PedagoArt Kids Store</h1>
+      <p>Materiais pedagógicos criativos para educadores</p>
+    </div>
+    <nav class="nav-links">
+      <a href="#inicio">Início</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#beneficios">Benefícios</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- ============================================
+       SEÇÃO HERO (INÍCIO)
+       ============================================ -->
+  <section id="inicio" class="hero">
+    <div>
+      <span class="hero-badge">🎯 Loja Digital para Professores e Famílias</span>
+      <h2>Arquivos pedagógicos profissionais para transformar sua rotina escolar</h2>
+      <p>Venda e distribua atividades, desenhos, artes sazonais, alfabetização e recursos educativos completos para educação infantil e ensino fundamental até o 5º ano.</p>
+      <div class="hero-buttons">
+        <a href="#catalogo" class="btn-primario">📚 Ver Catálogo</a>
+        <a href="https://wa.me/5500000000000" class="btn-whats">💬 Comprar pelo WhatsApp</a>
+      </div>
+    </div>
+    <div class="hero-imagem">
+      <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80" alt="Materiais pedagógicos">
+      <div class="hero-card-flutuante">
+        <p style="font-weight: 700; color: #1e3a8a;">📦 +1000 Arquivos Educativos</p>
+        <p style="color: #64748b;">Prontos para impressão e venda</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FILTROS POR CATEGORIA
+       ============================================ -->
+  <div class="container filtros-area">
+    <h3 class="filtros-titulo">📂 Filtrar por categoria</h3>
+    <div class="botoes-filtro" id="grupo-filtros">
+      <button data-filtro="todos" class="btn-filtro ativo">✨ Todos os produtos</button>
+      <button data-filtro="datas" class="btn-filtro">🎉 Datas Comemorativas</button>
+      <button data-filtro="alfabetizacao" class="btn-filtro">📖 Alfabetização</button>
+      <button data-filtro="kits" class="btn-filtro">🏆 Kits Premium</button>
+    </div>
+  </div>
+
+  <!-- ============================================
+       CATÁLOGO DE PRODUTOS
+       ============================================ -->
+  <section id="catalogo" class="catalogo">
+    <div class="catalogo-header">
+      <h3>🎨 Catálogo de Produtos</h3>
+      <p style="color: #64748b;">Modelos profissionais prontos para adicionar seus arquivos, links de venda e preços personalizados.</p>
+    </div>
+    <div class="produtos-grid" id="lista-produtos"></div>
+  </section>
+
+  <!-- ============================================
+       BENEFÍCIOS
+       ============================================ -->
+  <section id="beneficios" class="beneficios">
+    <h3>⭐ Por que escolher sua loja?</h3>
+    <div class="beneficios-grid">
+      <div class="beneficio-card">
+        <div class="beneficio-icone">🎨</div>
+        <h4>Design Profissional</h4>
+        <p>Estrutura premium para valorizar seus produtos digitais e aumentar conversões.</p>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icone">💳</div>
+        <h4>Venda Simplificada</h4>
+        <p>Integração fácil com WhatsApp, Pix, links externos e plataformas digitais.</p>
+      </div>
+      <div class="beneficio-card">
+        <div class="beneficio-icone">🚀</div>
+        <h4>Escalável</h4>
+        <p>Adicione novos arquivos, categorias e promoções sempre que desejar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SEÇÃO CONTATO (CTA)
+       ============================================ -->
+  <section id="contato" class="cta">
+    <h3>✨ Pronto para vender seus materiais?</h3>
+    <p>Personalize este site com seus produtos, arquivos e links para criar sua loja pedagógica digital profissional.</p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/5500000000000" class="cta-whats">💬 WhatsApp Comercial</a>
+      <a href="mailto:contato@seudominio.com" class="cta-email">📧 Email Comercial</a>
+    </div>
+  </section>
+</main>
+
+<!-- ============================================
+     RODAPÉ
+     ============================================ -->
+<footer class="footer">
+  <p>© 2026 PedagoArt Kids Store • Loja digital de materiais pedagógicos.</p>
+</footer>
+
+<!-- ============================================
+     WHATSAPP FLUTUANTE
+     ============================================ -->
+<div class="whatsapp-float">
+  <a href="https://wa.me/5500000000000" target="_blank">💬</a>
+</div>
+
+<!-- ============================================
+     MODAL DE COMPRA (SIMULAÇÃO)
+     ============================================ -->
+<div id="modal-compra" class="modal">
+  <div class="modal-conteudo">
+    <h3 style="margin-bottom: 1rem;">🛒 Produto adicionado!</h3>
+    <p style="margin-bottom: 1.5rem;">Complete sua compra pelo WhatsApp para receber o link de download.</p>
+    <a href="https://wa.me/5500000000000" class="btn-whats" style="display: inline-block;">Ir para o WhatsApp</a>
+    <button onclick="fecharModal()" style="margin-top: 1rem; background: none; border: none; color: #64748b; cursor: pointer;">Fechar</button>
+  </div>
+</div>
+
+<script>
+  // ============================================
+  // BANCO DE DADOS DOS PRODUTOS (FÁCIL DE EDITAR)
+  // ============================================
+  const produtos = [
     {
-      title: "Datas Comemorativas",
-      description: "Artes, painéis, lembrancinhas, murais e recursos temáticos para todo o calendário escolar.",
-      price: "A partir de R$ 14,90",
-      link: "#",
-      image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=900&q=80"
+      id: 1,
+      titulo: "🎉 Datas Comemorativas",
+      descricao: "Artes, painéis, lembrancinhas, murais e recursos temáticos para todo o calendário escolar.",
+      preco: "A partir de R$ 14,90",
+      imagem: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=900&q=80",
+      categoria: "datas"
     },
     {
-      title: "Atividades de Alfabetização",
-      description: "Materiais prontos para leitura, escrita, coordenação motora e desenvolvimento infantil.",
-      price: "A partir de R$ 19,90",
-      link: "#",
-      image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80"
+      id: 2,
+      titulo: "📖 Atividades de Alfabetização",
+      descricao: "Materiais prontos para leitura, escrita, coordenação motora e desenvolvimento infantil.",
+      preco: "A partir de R$ 19,90",
+      imagem: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
+      categoria: "alfabetizacao"
     },
     {
-      title: "Kits Pedagógicos Premium",
-      description: "Pacotes completos com jogos, planners, atividades e materiais exclusivos para professores.",
-      price: "A partir de R$ 39,90",
-      link: "#",
-      image: "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=900&q=80"
+      id: 3,
+      titulo: "🏆 Kits Pedagógicos Premium",
+      descricao: "Pacotes completos com jogos, planners, atividades e materiais exclusivos para professores.",
+      preco: "A partir de R$ 39,90",
+      imagem: "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=900&q=80",
+      categoria: "kits"
     }
   ];
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 text-gray-800">
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div>
-            <h1 className="text-3xl font-extrabold text-blue-800">PedagoArt Kids Store</h1>
-            <p className="text-sm text-gray-500">Materiais pedagógicos criativos para educadores</p>
-          </div>
-          <nav className="hidden md:flex gap-8 font-medium">
-            <a href="#inicio" className="hover:text-blue-700">Início</a>
-            <a href="#catalogo" className="hover:text-blue-700">Catálogo</a>
-            <a href="#beneficios" className="hover:text-blue-700">Benefícios</a>
-            <a href="#contato" className="hover:text-blue-700">Contato</a>
-          </nav>
-        </div>
-      </header>
+  // ============================================
+  // FUNÇÃO PARA RENDERIZAR PRODUTOS
+  // ============================================
+  function renderizarProdutos(filtro = "todos") {
+    const container = document.getElementById("lista-produtos");
+    if (!container) return;
 
-      <section id="inicio" className="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-14 items-center">
-        <div>
-          <span className="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-semibold mb-6">
-            Loja Digital para Professores e Famílias
-          </span>
-          <h2 className="text-5xl lg:text-6xl font-extrabold leading-tight text-slate-900 mb-6">
-            Arquivos pedagógicos profissionais para transformar sua rotina escolar
-          </h2>
-          <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-            Venda e distribua atividades, desenhos, artes sazonais, alfabetização e recursos educativos completos para educação infantil e ensino fundamental até o 5º ano.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <a href="#catalogo" className="bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-2xl shadow-lg font-semibold">
-              Ver Catálogo
-            </a>
-            <a href="https://wa.me/5500000000000" className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-2xl shadow-lg font-semibold">
-              Comprar pelo WhatsApp
-            </a>
-          </div>
-        </div>
-        <div className="relative">
-          <img
-            src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80"
-            alt="Materiais pedagógicos"
-            className="rounded-3xl shadow-2xl w-full h-[500px] object-cover"
-          />
-          <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-3xl shadow-xl border">
-            <p className="text-lg font-bold text-blue-800">+1000 Arquivos Educativos</p>
-            <p className="text-gray-500">Prontos para impressão e venda</p>
-          </div>
-        </div>
-      </section>
+    let produtosFiltrados = [];
+    if (filtro === "todos") {
+      produtosFiltrados = produtos;
+    } else {
+      produtosFiltrados = produtos.filter(p => p.categoria === filtro);
+    }
 
-      <section id="catalogo" className="py-24 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h3 className="text-4xl font-extrabold text-slate-900 mb-4">Catálogo de Produtos</h3>
-            <p className="text-lg text-gray-600">Modelos profissionais prontos para adicionar seus arquivos, links de venda e preços personalizados.</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {categories.map((item, index) => (
-              <div key={index} className="bg-white rounded-3xl overflow-hidden shadow-xl border hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                <img src={item.image} alt={item.title} className="w-full h-56 object-cover" />
-                <div className="p-8">
-                  <h4 className="text-2xl font-bold text-blue-800 mb-3">{item.title}</h4>
-                  <p className="text-gray-600 mb-6 leading-relaxed">{item.description}</p>
-                  <div className="flex justify-between items-center mb-6">
-                    <span className="text-2xl font-extrabold text-green-600">{item.price}</span>
-                  </div>
-                  <div className="space-y-3">
-                    <a href={item.link} className="block text-center bg-blue-700 hover:bg-blue-800 text-white py-3 rounded-2xl font-semibold">
-                      Ver Produto
-                    </a>
-                    <a href="https://wa.me/5500000000000" className="block text-center border border-green-600 text-green-700 hover:bg-green-50 py-3 rounded-2xl font-semibold">
-                      Comprar via WhatsApp
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+    if (produtosFiltrados.length === 0) {
+      container.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:3rem;">🔍 Nenhum produto encontrado para esta categoria.</div>`;
+      return;
+    }
 
-      <section id="beneficios" className="py-24 px-6 bg-slate-50">
-        <div className="max-w-7xl mx-auto">
-          <h3 className="text-4xl font-extrabold text-center text-slate-900 mb-16">Por que escolher sua loja?</h3>
-          <div className="grid md:grid-cols-3 gap-10">
-            <div className="bg-white p-10 rounded-3xl shadow-lg border">
-              <h4 className="text-2xl font-bold mb-4 text-blue-800">Design Profissional</h4>
-              <p className="text-gray-600">Estrutura premium para valorizar seus produtos digitais e aumentar conversões.</p>
-            </div>
-            <div className="bg-white p-10 rounded-3xl shadow-lg border">
-              <h4 className="text-2xl font-bold mb-4 text-blue-800">Venda Simplificada</h4>
-              <p className="text-gray-600">Integração fácil com WhatsApp, Pix, links externos e plataformas digitais.</p>
-            </div>
-            <div className="bg-white p-10 rounded-3xl shadow-lg border">
-              <h4 className="text-2xl font-bold mb-4 text-blue-800">Escalável</h4>
-              <p className="text-gray-600">Adicione novos arquivos, categorias e promoções sempre que desejar.</p>
+    let html = "";
+    for (let produto of produtosFiltrados) {
+      html += `
+        <div class="cartao-produto">
+          <img class="produto-img" src="${produto.imagem}" alt="${produto.titulo}">
+          <div class="produto-info">
+            <h3 class="produto-titulo">${produto.titulo}</h3>
+            <p class="produto-descricao">${produto.descricao}</p>
+            <div class="produto-preco">${produto.preco}</div>
+            <div class="botoes-produto">
+              <button onclick="abrirModal('${produto.titulo}')" class="btn-ver">🛒 Ver Produto</button>
+              <a href="https://wa.me/5500000000000" class="btn-whats-produto">💬 Comprar via WhatsApp</a>
             </div>
           </div>
         </div>
-      </section>
+      `;
+    }
+    container.innerHTML = html;
+  }
 
-      <section id="contato" className="py-24 px-6 bg-blue-800 text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-4xl font-extrabold mb-6">Pronto para vender seus materiais?</h3>
-          <p className="text-xl text-blue-100 mb-10">
-            Personalize este site com seus produtos, arquivos e links para criar sua loja pedagógica digital profissional.
-          </p>
-          <div className="flex flex-col md:flex-row gap-4 justify-center">
-            <a href="https://wa.me/5500000000000" className="bg-green-600 hover:bg-green-700 px-8 py-4 rounded-2xl font-bold shadow-lg">
-              WhatsApp Comercial
-            </a>
-            <a href="mailto:contato@seudominio.com" className="bg-white text-blue-800 hover:bg-gray-100 px-8 py-4 rounded-2xl font-bold shadow-lg">
-              Email Comercial
-            </a>
-          </div>
-        </div>
-      </section>
+  // ============================================
+  // FUNÇÃO PARA FILTROS
+  // ============================================
+  function configurarFiltros() {
+    const botoes = document.querySelectorAll('.btn-filtro');
+    botoes.forEach(botao => {
+      botao.addEventListener('click', function() {
+        botoes.forEach(btn => btn.classList.remove('ativo'));
+        this.classList.add('ativo');
+        const filtro = this.getAttribute('data-filtro');
+        renderizarProdutos(filtro);
+      });
+    });
+  }
 
-      <footer className="bg-slate-950 text-gray-300 py-8 text-center">
-        <p>© 2026 PedagoArt Kids Store • Loja digital de materiais pedagógicos.</p>
-      </footer>
-    </div>
-  );
-}
+  // ============================================
+  // MODAL DE COMPRA
+  // ============================================
+  function abrirModal(produtoNome) {
+    const modal = document.getElementById('modal-compra');
+    modal.style.display = 'flex';
+  }
+
+  function fecharModal() {
+    const modal = document.getElementById('modal-compra');
+    modal.style.display = 'none';
+  }
+
+  // Fechar modal clicando fora
+  window.onclick = function(event) {
+    const modal = document.getElementById('modal-compra');
+    if (event.target === modal) {
+      modal.style.display = 'none';
+    }
+  }
+
+  // ============================================
+  // INICIALIZAÇÃO
+  // ============================================
+  document.addEventListener('DOMContentLoaded', () => {
+    renderizarProdutos("todos");
+    configurarFiltros();
+  });
+</script>
+</body>
+</html>
