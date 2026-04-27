@@ -1,0 +1,107 @@
+export default function PedagogicalMaterialsStore() {
+  const products = [
+    {
+      title: "Artes e Datas Comemorativas",
+      description: "Painéis, lembrancinhas, desenhos, murais, capas e recursos exclusivos para Páscoa, São João, Dia das Mães, Natal, folclore e muito mais.",
+      price: "R$ 49,90"
+    },
+    {
+      title: "Atividades Pedagógicas Imprimíveis",
+      description: "Atividades de alfabetização, matemática, coordenação motora, leitura, interpretação e conteúdos pedagógicos para crianças do infantil ao 5º ano.",
+      price: "R$ 39,90"
+    },
+    {
+      title: "Modelos Educativos Premium",
+      description: "Cadernos, planners, flashcards, jogos educativos, moldes visuais e materiais prontos para impressão.",
+      price: "R$ 29,90"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white text-gray-800">
+      <header className="bg-blue-700 text-white shadow-lg">
+        <div className="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
+          <h1 className="text-3xl font-bold">PedagoArt Kids Store</h1>
+          <nav className="space-x-6 text-lg">
+            <a href="#inicio" className="hover:underline">Início</a>
+            <a href="#produtos" className="hover:underline">Materiais</a>
+            <a href="#beneficios" className="hover:underline">Benefícios</a>
+            <a href="#contato" className="hover:underline">Contato</a>
+          </nav>
+        </div>
+      </header>
+
+      <section id="inicio" className="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 className="text-5xl font-extrabold leading-tight text-blue-800 mb-6">
+            Arquivos Pedagógicos Criativos para Educação Infantil e Ensino Fundamental (até o 5º ano)
+          </h2>
+          <p className="text-xl text-gray-600 mb-8">
+            Encontre desenhos educativos, artes para datas comemorativas, atividades imprimíveis, modelos pedagógicos e recursos criativos para professores, reforço escolar e famílias educadoras.
+          </p>
+          <button className="bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-2xl text-lg shadow-lg">
+            Comprar Agora
+          </button>
+        </div>
+        <div className="bg-white rounded-3xl shadow-2xl p-8 border">
+          <img
+            src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80"
+            alt="Materiais pedagógicos"
+            className="rounded-2xl w-full h-[400px] object-cover"
+          />
+        </div>
+      </section>
+
+      <section id="produtos" className="bg-gray-50 py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <h3 className="text-4xl font-bold text-center text-blue-800 mb-14">Nossos Produtos</h3>
+          <div className="grid md:grid-cols-3 gap-10">
+            {products.map((product, index) => (
+              <div key={index} className="bg-white rounded-3xl shadow-xl p-8 hover:scale-105 transition-transform border">
+                <h4 className="text-2xl font-bold mb-4 text-blue-700">{product.title}</h4>
+                <p className="text-gray-600 mb-6">{product.description}</p>
+                <p className="text-3xl font-extrabold text-green-600 mb-6">{product.price}</p>
+                <button className="w-full bg-blue-700 hover:bg-blue-800 text-white py-3 rounded-2xl font-semibold">
+                  Adquirir
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="beneficios" className="max-w-7xl mx-auto py-20 px-6">
+        <h3 className="text-4xl font-bold text-center text-blue-800 mb-14">Por que escolher nossos materiais?</h3>
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="bg-white p-8 rounded-3xl shadow-lg border">
+            <h4 className="text-2xl font-bold mb-4">Conteúdo Criativo e Educativo</h4>
+            <p>Materiais desenvolvidos para unir aprendizagem, ludicidade e desenvolvimento infantil.</p>
+          </div>
+          <div className="bg-white p-8 rounded-3xl shadow-lg border">
+            <h4 className="text-2xl font-bold mb-4">Pronto para Imprimir</h4>
+            <p>Baixe, imprima e utilize imediatamente em sala de aula, reforço ou atividades domiciliares.</p>
+          </div>
+          <div className="bg-white p-8 rounded-3xl shadow-lg border">
+            <h4 className="text-2xl font-bold mb-4">Variedade para Todo o Ano Letivo</h4>
+            <p>Recursos para alfabetização, ensino fundamental, datas sazonais e múltiplos contextos escolares.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contato" className="bg-blue-700 text-white py-20 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <h3 className="text-4xl font-bold mb-6">Entre em Contato</h3>
+          <p className="text-xl mb-8">Solicite pacotes exclusivos, arquivos personalizados ou suporte para sua loja pedagógica digital.</p>
+          <div className="space-y-3 text-lg">
+            <p>Email: contato@educamasterpremium.com</p>
+            <p>WhatsApp: (79) 99999-9999</p>
+          </div>
+        </div>
+      </section>
+
+      <footer className="bg-gray-900 text-white py-6 text-center">
+        <p>© 2026 PedagoArt Kids Store - Todos os direitos reservados.</p>
+      </footer>
+    </div>
+  );
+}
