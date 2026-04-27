@@ -1130,3 +1130,305 @@
       </div>
       <div class="benefit-card">
         <div class="benefit-icon">🎮</div>
+        <h4>Aprendizagem Lúdica</h4>
+        <p>Aprender brincando é mais divertido e eficaz</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">📚</div>
+        <h4>Alinhado à BNCC</h4>
+        <p>Todos os materiais seguem a Base Nacional Comum</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🔒</div>
+        <h4>Conteúdo Protegido</h4>
+        <p>Imagens protegidas contra cópia</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       📞 CTA
+       ============================================ -->
+  <section id="contact" class="cta-section">
+    <h3>🚀 Pronto para transformar suas aulas?</h3>
+    <p>Adquira já meus materiais pedagógicos e torne suas aulas mais divertidas!</p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/qr/QMLMG265QVDKE1" class="cta-whats">💬 Falar com a Pedagoga</a>
+      <a href="mailto:cleisiane@pedagoart.com" class="cta-email">📧 Enviar Email</a>
+    </div>
+  </section>
+</main>
+
+<!-- ============================================
+     🦶 FOOTER
+     ============================================ -->
+<footer class="footer">
+  <p>© 2026 Cleisiane Barreto • PedagoArt Kids Store</p>
+  <p style="font-size: 0.7rem; margin-top: 0.5rem;">✨ Materiais pedagógicos criados com carinho para educadores ✨</p>
+  <div class="protection-notice">🔒 Todo o conteúdo deste site é protegido. As imagens são apenas para visualização.</div>
+</footer>
+
+<!-- ============================================
+     💬 WHATSAPP FLUTUANTE
+     ============================================ -->
+<div class="whatsapp-float">
+  <a href="https://wa.me/qr/QMLMG265QVDKE1" target="_blank">💬</a>
+</div>
+
+<!-- ============================================
+     🎫 MODAL GALERIA
+     ============================================ -->
+<div id="modalGallery" class="modal-gallery">
+  <div class="modal-gallery-content">
+    <div id="modalGalleryContent"></div>
+    <button class="modal-close-gallery" onclick="closeModalGallery()" style="background:none; border:none; color:var(--cor-texto); margin-top:1rem; cursor:pointer;">Fechar</button>
+  </div>
+</div>
+
+<!-- ============================================
+     🖼️ MODAL ZOOM
+     ============================================ -->
+<div id="modalZoom" class="modal-zoom" onclick="closeZoom()">
+  <button class="close-zoom" onclick="closeZoom()">✕</button>
+  <img id="zoomImage" src="" alt="Visualização ampliada">
+</div>
+
+<script>
+  // ============================================
+  // 🛡️ PROTEÇÃO DE IMAGENS
+  // ============================================
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+      return false;
+    });
+  });
+  
+  window.addEventListener('dragstart', (e) => {
+    if (e.target.tagName === 'IMG') {
+      e.preventDefault();
+      return false;
+    }
+  });
+  
+  document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.key === 's') {
+      e.preventDefault();
+      alert('🔒 Salvamento não permitido para proteger o conteúdo.');
+      return false;
+    }
+    if (e.ctrlKey && e.key === 'u') {
+      e.preventDefault();
+      alert('🔒 Visualização do código fonte não permitida.');
+      return false;
+    }
+    if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+      e.preventDefault();
+      alert('🔒 Ferramentas bloqueadas para proteger o conteúdo.');
+      return false;
+    }
+    if (e.key === 'F12') {
+      e.preventDefault();
+      alert('🔒 Ferramentas bloqueadas para proteger o conteúdo.');
+      return false;
+    }
+  });
+
+  // ============================================
+  // 📦 PRODUTOS
+  // ============================================
+  const products = [
+    {
+      id: 1,
+      title: "🎉 Datas Comemorativas",
+      description: "Kit completo com atividades para todas as datas comemorativas do ano letivo. Colorido e divertido!",
+      price: "R$ 19,90",
+      image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=900&q=80",
+      category: "datas",
+      previewImages: [
+        { url: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=500&q=80", caption: "🎭 Carnaval", price: "R$ 3,90" },
+        { url: "https://images.unsplash.com/photo-1542393545-10f5cde2c810?auto=format&fit=crop&w=500&q=80", caption: "🐰 Páscoa", price: "R$ 4,90" },
+        { url: "https://images.unsplash.com/photo-1513151233558-860c539d9f5b?auto=format&fit=crop&w=500&q=80", caption: "🌽 Festa Junina", price: "R$ 4,90" },
+        { url: "https://images.unsplash.com/photo-1513885535751-8b923cebd345?auto=format&fit=crop&w=500&q=80", caption: "💐 Dia das Mães", price: "R$ 3,90" },
+        { url: "https://images.unsplash.com/photo-1556741533-6e6a3bd8e341?auto=format&fit=crop&w=500&q=80", caption: "🎄 Natal", price: "R$ 4,90" }
+      ]
+    },
+    {
+      id: 2,
+      title: "📖 Alfabetização Completa",
+      description: "Atividades de leitura, escrita e coordenação motora para 1º ao 3º ano. Mais de 200 páginas!",
+      price: "R$ 24,90",
+      image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
+      category: "alfabetizacao",
+      previewImages: [
+        { url: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=500&q=80", caption: "🔤 Alfabeto", price: "R$ 5,90" },
+        { url: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=500&q=80", caption: "✍️ Coordenação Motora", price: "R$ 5,90" },
+        { url: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&w=500&q=80", caption: "📝 Formação de Palavras", price: "R$ 6,90" },
+        { url: "https://images.unsplash.com/photo-1503694978374-8a2fa6f3e1df?auto=format&fit=crop&w=500&q=80", caption: "📖 Leitura e Interpretação", price: "R$ 6,90" }
+      ]
+    },
+    {
+      id: 3,
+      title: "🏆 Kits Premium Professor",
+      description: "Pacote completo com planners, calendários, fichas de avaliação e materiais exclusivos.",
+      price: "R$ 49,90",
+      image: "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=900&q=80",
+      category: "kits",
+      previewImages: [
+        { url: "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=500&q=80", caption: "📅 Planner do Professor", price: "R$ 12,90" },
+        { url: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=500&q=80", caption: "📊 Planejamento Anual", price: "R$ 15,90" },
+        { url: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=500&q=80", caption: "🗓️ Calendário Escolar", price: "R$ 7,90" },
+        { url: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=500&q=80", caption: "📋 Fichas de Avaliação", price: "R$ 9,90" }
+      ]
+    },
+    {
+      id: 4,
+      title: "🧮 Matemática Lúdica",
+      description: "Jogos e atividades matemáticas para aprender brincando. Números, tabuada e formas geométricas.",
+      price: "R$ 27,90",
+      image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=900&q=80",
+      category: "alfabetizacao",
+      previewImages: [
+        { url: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=500&q=80", caption: "🔢 Números e Quantidades", price: "R$ 5,90" },
+        { url: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?auto=format&fit=crop&w=500&q=80", caption: "➕ Adição e Subtração", price: "R$ 6,90" },
+        { url: "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?auto=format&fit=crop&w=500&q=80", caption: "✖️ Tabuada Divertida", price: "R$ 7,90" },
+        { url: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=500&q=80", caption: "🔺 Formas Geométricas", price: "R$ 5,90" }
+      ]
+    }
+  ];
+
+  // ============================================
+  // RENDERIZAR PRODUTOS
+  // ============================================
+  function renderProducts(filter = "all") {
+    const container = document.getElementById("productsGrid");
+    if (!container) return;
+
+    let filteredProducts = [];
+    if (filter === "all") {
+      filteredProducts = products;
+    } else {
+      filteredProducts = products.filter(p => p.category === filter);
+    }
+
+    if (filteredProducts.length === 0) {
+      container.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:3rem;">🔍 Nenhum produto encontrado para esta categoria.</div>`;
+      return;
+    }
+
+    let html = "";
+    for (let product of filteredProducts) {
+      html += `
+        <div class="product-card">
+          <div class="product-badge">🎁 Completo</div>
+          <div class="product-image-container">
+            <img class="product-image" src="${product.image}" alt="${product.title}" loading="lazy" draggable="false" oncontextmenu="return false">
+          </div>
+          <div class="product-info">
+            <h3 class="product-title">${product.title}</h3>
+            <p class="product-description">${product.description}</p>
+            <div class="product-price">💰 ${product.price}</div>
+            <button onclick="openModalGallery(${product.id})" class="btn-gallery">🛒 Ver opções (${product.previewImages.length} itens)</button>
+          </div>
+        </div>
+      `;
+    }
+    container.innerHTML = html;
+  }
+
+  // ============================================
+  // FILTROS
+  // ============================================
+  function setupFilters() {
+    const buttons = document.querySelectorAll('.filter-btn');
+    buttons.forEach(button => {
+      button.addEventListener('click', function() {
+        buttons.forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+        const filter = this.getAttribute('data-filter');
+        renderProducts(filter);
+      });
+    });
+  }
+
+  // ============================================
+  // MODAL GALERIA
+  // ============================================
+  function openModalGallery(productId) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+
+    let galleryHtml = `
+      <h2>📦 ${product.title}</h2>
+      <div class="modal-price">💰 ${product.price} - Kit Completo</div>
+      <p style="color: var(--cor-texto-claro); text-align: center; margin-bottom: 0.5rem;">Escolha como deseja comprar:</p>
+      
+      <a href="https://wa.me/qr/QMLMG265QVDKE1?text=Olá! Gostaria de comprar o KIT COMPLETO ${product.title} - ${product.price}" class="btn-buy-kit">🎁 Comprar Kit Completo (${product.previewImages.length} itens) - ${product.price}</a>
+      
+      <div class="divider">⭐ OU COMPRE INDIVIDUALMENTE ⭐</div>
+      
+      <div class="gallery-grid">
+    `;
+
+    for (let img of product.previewImages) {
+      galleryHtml += `
+        <div class="gallery-item">
+          <img class="gallery-image" src="${img.url}" alt="${img.caption}" draggable="false" oncontextmenu="return false" onclick="openZoom('${img.url}')">
+          <div class="gallery-caption">${img.caption}</div>
+          <div class="gallery-price">💰 ${img.price}</div>
+          <div class="gallery-buttons">
+            <button onclick="openZoom('${img.url}')" class="btn-view-zoom">🔍 Ampliar</button>
+            <a href="https://wa.me/qr/QMLMG265QVDKE1?text=Olá! Gostaria de comprar: ${img.caption} - ${img.price}" class="btn-buy-single">🛒 Comprar</a>
+          </div>
+        </div>
+      `;
+    }
+
+    galleryHtml += `</div>`;
+
+    document.getElementById("modalGalleryContent").innerHTML = galleryHtml;
+    document.getElementById("modalGallery").style.display = "flex";
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModalGallery() {
+    document.getElementById("modalGallery").style.display = "none";
+    document.body.style.overflow = "auto";
+  }
+
+  // ============================================
+  // ZOOM
+  // ============================================
+  function openZoom(imageUrl) {
+    document.getElementById("zoomImage").src = imageUrl;
+    document.getElementById("modalZoom").style.display = "flex";
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeZoom() {
+    document.getElementById("modalZoom").style.display = "none";
+    document.body.style.overflow = "auto";
+  }
+
+  // ============================================
+  // FECHAR MODAIS
+  // ============================================
+  window.onclick = function(event) {
+    if (event.target === document.getElementById('modalGallery')) {
+      closeModalGallery();
+    }
+    if (event.target === document.getElementById('modalZoom')) {
+      closeZoom();
+    }
+  }
+
+  // ============================================
+  // INICIALIZAÇÃO
+  // ============================================
+  document.addEventListener('DOMContentLoaded', () => {
+    renderProducts("all");
+    setupFilters();
+  });
+</script>
+</body>
+</html>
