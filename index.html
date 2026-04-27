@@ -602,6 +602,48 @@
     }
 
     /* ============================================
+       👩‍🏫 SEÇÃO SOBRE O PROFESSOR
+       ============================================ */
+    .about-teacher {
+      max-width: 1280px;
+      margin: 4rem auto;
+      padding: 2rem;
+    }
+
+    .teacher-card {
+      background: linear-gradient(135deg, rgba(79,70,229,0.15), rgba(236,72,153,0.15));
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--border-radius);
+      padding: 3rem;
+      text-align: center;
+    }
+
+    .teacher-avatar {
+      font-size: 5rem;
+      margin-bottom: 1rem;
+    }
+
+    .teacher-card h3 {
+      font-size: 2rem;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .teacher-card p {
+      color: #cbd5e1;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    .teacher-signature {
+      margin-top: 1.5rem;
+      font-style: italic;
+      color: #a78bfa;
+    }
+
+    /* ============================================
        📞 CTA SECTION
        ============================================ */
     .cta-section {
@@ -860,7 +902,7 @@
   <section id="home" class="hero">
     <div class="hero-content">
       <div class="hero-badge">
-        <span>🏆</span> Loja Digital Premium
+        <span>👨‍🏫</span> Materiais criados por um professor apaixonado
       </div>
       <h2>Arquivos pedagógicos que transformam o ensino</h2>
       <p>Materiais exclusivos para educação infantil e ensino fundamental I. Baixe imediatamente após a compra.</p>
@@ -868,10 +910,6 @@
         <div class="stat">
           <div class="stat-number">+1.000</div>
           <div class="stat-label">Arquivos</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">+500</div>
-          <div class="stat-label">Professores</div>
         </div>
         <div class="stat">
           <div class="stat-number">⭐ 4.9</div>
@@ -914,15 +952,27 @@
   </section>
 
   <!-- ============================================
+       👨‍🏫 SEÇÃO SOBRE O PROFESSOR
+       ============================================ -->
+  <div class="about-teacher">
+    <div class="teacher-card">
+      <div class="teacher-avatar">👨‍🏫❤️</div>
+      <h3>Olá! Sou o Professor Carlos</h3>
+      <p>Com mais de 10 anos de experiência em sala de aula, criei esses materiais com muito carinho para ajudar outros educadores a terem aulas mais dinâmicas, criativas e produtivas. Cada arquivo foi testado e aprovado pelos meus próprios alunos!</p>
+      <p class="teacher-signature">"Ensinar é transformar vidas, um material de cada vez."</p>
+    </div>
+  </div>
+
+  <!-- ============================================
        ⭐ BENEFÍCIOS
        ============================================ -->
   <section id="benefits" class="benefits-section">
-    <h3 class="benefits-title">✨ Por que escolher a PedagoArt?</h3>
+    <h3 class="benefits-title">✨ Por que escolher meus materiais?</h3>
     <div class="benefits-grid">
       <div class="benefit-card">
         <div class="benefit-icon">🎨</div>
-        <h4>Design Premium</h4>
-        <p>Materiais visualmente incríveis que encantam alunos</p>
+        <h4>Design Atraente</h4>
+        <p>Materiais coloridos que encantam os alunos</p>
       </div>
       <div class="benefit-card">
         <div class="benefit-icon">⚡</div>
@@ -946,10 +996,10 @@
        📞 CTA
        ============================================ -->
   <section id="contact" class="cta-section">
-    <h3>🚀 Pronto para revolucionar suas aulas?</h3>
-    <p>Adquira já seus materiais pedagógicos premium e transforme sua rotina escolar</p>
+    <h3>🚀 Pronto para transformar suas aulas?</h3>
+    <p>Adquira já meus materiais pedagógicos premium e revolucione sua rotina escolar</p>
     <div class="cta-buttons">
-      <a href="https://wa.me/5500000000000" class="cta-whats">💬 Falar no WhatsApp</a>
+      <a href="https://wa.me/5500000000000" class="cta-whats">💬 Falar com o Professor</a>
       <a href="mailto:contato@pedagoart.com" class="cta-email">📧 Enviar Email</a>
     </div>
   </section>
@@ -959,7 +1009,7 @@
      🦶 FOOTER
      ============================================ -->
 <footer class="footer">
-  <p>© 2026 PedagoArt Kids Store • Todos os direitos reservados • Materiais pedagógicos premium</p>
+  <p>© 2026 PedagoArt Kids Store • Materiais pedagógicos criados com carinho por um professor apaixonado pela educação</p>
 </footer>
 
 <!-- ============================================
@@ -977,7 +1027,7 @@
     <div style="font-size: 4rem;">🎉</div>
     <h3>Produto Selecionado!</h3>
     <p>Complete sua compra pelo WhatsApp para receber o link de download imediato.</p>
-    <a href="https://wa.me/5500000000000" class="btn-whatsapp" style="display: inline-block; padding: 0.8rem 2rem;">Ir para o WhatsApp</a>
+    <a href="https://wa.me/5500000000000" class="btn-whatsapp" style="display: inline-block; padding: 0.8rem 2rem;">Falar com o Professor</a>
     <br>
     <button class="modal-close" onclick="closeModal()">Fechar</button>
   </div>
@@ -1002,34 +1052,4 @@
       description: "Atividades de leitura, escrita, coordenação motora e desenvolvimento infantil. 1º ao 3º ano.",
       price: "R$ 19,90",
       image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
-      category: "alfabetizacao"
-    },
-    {
-      id: 3,
-      title: "🏆 Kit Premium Professor",
-      description: "Planners, jogos, atividades e materiais exclusivos. Pacote completo 1º ao 5º ano.",
-      price: "R$ 39,90",
-      image: "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=900&q=80",
-      category: "kits"
-    },
-    {
-      id: 4,
-      title: "🎨 Artes Sazonais",
-      description: "Murais coloridos e lembrancinhas para todas as épocas do ano. Educação infantil e fundamental.",
-      price: "R$ 12,90",
-      image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=900&q=80",
-      category: "datas"
-    },
-    {
-      id: 5,
-      title: "🧮 Matemática Lúdica",
-      description: "Jogos e atividades para aprender matemática brincando. 1º ao 5º ano.",
-      price: "R$ 17,90",
-      image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=900&q=80",
-      category: "alfabetizacao"
-    },
-    {
-      id: 6,
-      title: "📚 Planejamento BNCC",
-      description: "Planejamento anual completo com habilidades e avaliações para todos os anos.",
-      price: "R$ 49,90",
+      category: "
