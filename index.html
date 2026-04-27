@@ -42,6 +42,8 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      -webkit-user-drag: none; /* Impede arrastar no Safari */
+      user-select: none; /* Impede seleção de texto */
     }
 
     body {
@@ -50,6 +52,11 @@
       color: var(--cor-texto);
       line-height: 1.6;
       overflow-x: hidden;
+    }
+
+    /* Permite seleção de texto apenas em áreas específicas */
+    .product-description, .teacher-card p, .benefit-card p, .file-name, .modal-files-content p {
+      user-select: text;
     }
 
     /* ============================================
@@ -90,6 +97,41 @@
     }
 
     /* ============================================
+       🛡️ PROTEÇÃO DE IMAGENS - Camada protetora
+       ============================================ */
+    .image-protected {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--border-radius);
+    }
+
+    .image-protected::after {
+      content: '🔒';
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      font-size: 0.7rem;
+      padding: 4px 8px;
+      border-radius: 20px;
+      z-index: 3;
+      pointer-events: none;
+      font-family: monospace;
+    }
+
+    .image-protected img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transicao-slow);
+      pointer-events: none; /* Impede clique direito na imagem */
+      -webkit-user-drag: none;
+      user-drag: none;
+      draggable: false;
+    }
+
+    /* ============================================
        🎨 SCROLLBAR PERSONALIZADA
        ============================================ */
     ::-webkit-scrollbar {
@@ -121,11 +163,6 @@
       backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       transition: var(--transicao);
-    }
-
-    .header-scrolled {
-      background: rgba(15, 23, 42, 0.95);
-      box-shadow: var(--sombra-xl);
     }
 
     .header-container {
@@ -186,7 +223,7 @@
     }
 
     /* ============================================
-       🎯 HERO SECTION PREMIUM
+       🎯 HERO SECTION
        ============================================ */
     .hero {
       min-height: 100vh;
@@ -347,6 +384,9 @@
       border-radius: var(--border-radius);
       box-shadow: var(--sombra-2xl);
       border: 1px solid rgba(255,255,255,0.1);
+      pointer-events: none;
+      -webkit-user-drag: none;
+      user-drag: none;
     }
 
     .floating-card {
@@ -367,7 +407,7 @@
     }
 
     /* ============================================
-       🔍 SEÇÃO DE FILTROS
+       🔍 FILTROS
        ============================================ */
     .filters-section {
       max-width: 1280px;
@@ -419,7 +459,7 @@
     }
 
     /* ============================================
-       🛍️ GRADE DE PRODUTOS PREMIUM
+       🛍️ GRADE DE PRODUTOS
        ============================================ */
     .products-section {
       padding: 4rem 2rem;
@@ -465,11 +505,38 @@
       box-shadow: var(--sombra-2xl);
     }
 
-    .product-image {
+    /* Container da imagem com proteção */
+    .product-image-container {
+      position: relative;
       width: 100%;
       height: 240px;
+      overflow: hidden;
+    }
+
+    .product-image-container::after {
+      content: '🔒';
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0,0,0,0.5);
+      color: white;
+      font-size: 0.7rem;
+      padding: 3px 6px;
+      border-radius: 20px;
+      z-index: 3;
+      font-family: monospace;
+      pointer-events: none;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       transition: var(--transicao-slow);
+      pointer-events: none;
+      -webkit-user-drag: none;
+      user-drag: none;
+      draggable: false;
     }
 
     .product-card:hover .product-image {
@@ -492,6 +559,7 @@
       font-size: 0.9rem;
       margin-bottom: 1.5rem;
       line-height: 1.6;
+      user-select: text;
     }
 
     .product-price {
@@ -550,7 +618,7 @@
     }
 
     /* ============================================
-       ⭐ BENEFÍCIOS SECTION
+       ⭐ BENEFÍCIOS
        ============================================ */
     .benefits-section {
       padding: 5rem 2rem;
@@ -602,10 +670,11 @@
 
     .benefit-card p {
       color: #94a3b8;
+      user-select: text;
     }
 
     /* ============================================
-       👩‍🏫 SEÇÃO SOBRE A PEDAGOGA CLEISIANE BARRETO
+       👩‍🏫 SOBRE A PEDAGOGA
        ============================================ */
     .about-teacher {
       max-width: 1280px;
@@ -638,6 +707,7 @@
       max-width: 600px;
       margin: 0 auto;
       line-height: 1.8;
+      user-select: text;
     }
 
     .teacher-signature {
@@ -647,7 +717,7 @@
     }
 
     /* ============================================
-       📞 CTA SECTION
+       📞 CTA
        ============================================ */
     .cta-section {
       padding: 5rem 2rem;
@@ -688,6 +758,7 @@
       margin-bottom: 2rem;
       position: relative;
       z-index: 1;
+      user-select: text;
     }
 
     .cta-buttons {
@@ -729,6 +800,149 @@
     }
 
     /* ============================================
+       🎫 MODAL DE ARQUIVOS
+       ============================================ */
+    .modal-files {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      backdrop-filter: blur(15px);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-files-content {
+      background: linear-gradient(135deg, #1e1b4b, #0f172a);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--border-radius);
+      max-width: 800px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 2rem;
+      animation: modalIn 0.5s ease;
+    }
+
+    .modal-files-content h2 {
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-files-content .modal-price {
+      color: #10b981;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .files-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+
+    .file-item {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 1rem;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: var(--transicao);
+    }
+
+    .file-item:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: var(--cor-primaria);
+    }
+
+    .file-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .file-icon {
+      font-size: 1.8rem;
+    }
+
+    .file-name {
+      color: white;
+      font-weight: 500;
+      user-select: text;
+    }
+
+    .file-size {
+      color: #64748b;
+      font-size: 0.75rem;
+    }
+
+    .btn-download {
+      background: var(--sucesso);
+      color: white;
+      padding: 0.5rem 1.2rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: var(--transicao);
+    }
+
+    .btn-download:hover {
+      background: #0d9488;
+      transform: scale(1.05);
+    }
+
+    .btn-buy-kit {
+      background: var(--whatsapp);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      border-radius: 100px;
+      text-decoration: none;
+      font-weight: 600;
+      display: block;
+      margin-top: 1.5rem;
+      transition: var(--transicao);
+    }
+
+    .btn-buy-kit:hover {
+      background: var(--whatsapp-dark);
+      transform: scale(1.02);
+    }
+
+    .modal-close-files {
+      background: none;
+      border: none;
+      color: #64748b;
+      cursor: pointer;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .modal-close-files:hover {
+      color: white;
+    }
+
+    @keyframes modalIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* ============================================
        🦶 FOOTER
        ============================================ */
     .footer {
@@ -743,7 +957,7 @@
     }
 
     /* ============================================
-       💬 WHATSAPP FLUTUANTE PREMIUM
+       💬 WHATSAPP FLUTUANTE
        ============================================ */
     .whatsapp-float {
       position: fixed;
@@ -776,63 +990,6 @@
     .whatsapp-float a:hover {
       transform: scale(1.1);
       animation: none;
-    }
-
-    /* ============================================
-       🎫 MODAL PREMIUM
-       ============================================ */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.8);
-      backdrop-filter: blur(15px);
-      z-index: 2000;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal-content {
-      background: linear-gradient(135deg, #1e1b4b, #0f172a);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: var(--border-radius);
-      max-width: 450px;
-      width: 90%;
-      padding: 2rem;
-      text-align: center;
-      animation: modalIn 0.5s ease;
-    }
-
-    @keyframes modalIn {
-      from {
-        opacity: 0;
-        transform: scale(0.8);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .modal-content h3 {
-      color: white;
-      margin: 1rem 0;
-    }
-
-    .modal-content p {
-      color: #94a3b8;
-      margin-bottom: 1.5rem;
-    }
-
-    .modal-close {
-      background: none;
-      border: none;
-      color: #64748b;
-      cursor: pointer;
-      margin-top: 1rem;
     }
 
     /* ============================================
@@ -873,6 +1030,24 @@
       .products-grid {
         grid-template-columns: 1fr;
       }
+      
+      .file-item {
+        flex-direction: column;
+        gap: 0.75rem;
+        text-align: center;
+      }
+    }
+
+    /* ============================================
+       🛡️ AVISO DE PROTEÇÃO
+       ============================================ */
+    .protection-notice {
+      text-align: center;
+      padding: 0.5rem;
+      background: rgba(0,0,0,0.3);
+      font-size: 0.7rem;
+      color: #64748b;
+      margin-top: 1rem;
     }
   </style>
 </head>
@@ -908,10 +1083,10 @@
         <span>👩‍🏫</span> Materiais criados por uma pedagoga
       </div>
       <h2>Arquivos pedagógicos que transformam o ensino</h2>
-      <p>Materiais exclusivos para educação infantil e ensino fundamental I. Baixe imediatamente após a compra.</p>
+      <p>Materiais exclusivos para educação infantil e ensino fundamental I. Baixe imediatamente os arquivos que precisar.</p>
       <div class="hero-stats">
         <div class="stat">
-          <div class="stat-number">+100</div>
+          <div class="stat-number">+50</div>
           <div class="stat-label">Arquivos</div>
         </div>
         <div class="stat">
@@ -925,11 +1100,11 @@
       </div>
     </div>
     <div class="hero-image">
-      <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80" alt="Materiais pedagógicos">
+      <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80" alt="Materiais pedagógicos" draggable="false">
       <div class="floating-card">
-        <div style="font-size: 2rem;">🎨</div>
-        <p style="color: white; font-weight: 600;">Prontos para usar</p>
-        <p style="color: #94a3b8; font-size: 0.8rem;">Imprima e aplique hoje</p>
+        <div style="font-size: 2rem;">📚</div>
+        <p style="color: white; font-weight: 600;">Pacotes completos</p>
+        <p style="color: #94a3b8; font-size: 0.8rem;">Vários arquivos por kit</p>
       </div>
     </div>
   </section>
@@ -948,14 +1123,14 @@
   </div>
 
   <!-- ============================================
-       🛍️ CATÁLOGO DE PRODUTOS
+       🛍️ PRODUTOS
        ============================================ -->
   <section id="products" class="products-section">
     <div class="products-grid" id="productsGrid"></div>
   </section>
 
   <!-- ============================================
-       👩‍🏫 SEÇÃO SOBRE A PEDAGOGA CLEISIANE BARRETO
+       👩‍🏫 SOBRE A PEDAGOGA
        ============================================ -->
   <div class="about-teacher">
     <div class="teacher-card">
@@ -980,7 +1155,7 @@
       <div class="benefit-card">
         <div class="benefit-icon">⚡</div>
         <h4>Download Imediato</h4>
-        <p>Receba seus arquivos na hora após a compra</p>
+        <p>Receba seus arquivos na hora</p>
       </div>
       <div class="benefit-card">
         <div class="benefit-icon">📚</div>
@@ -988,9 +1163,9 @@
         <p>Todos os materiais seguem a Base Nacional Comum</p>
       </div>
       <div class="benefit-card">
-        <div class="benefit-icon">💳</div>
-        <h4>Pagamento Seguro</h4>
-        <p>Pix, cartão ou boleto com total segurança</p>
+        <div class="benefit-icon">🔒</div>
+        <h4>Conteúdo Protegido</h4>
+        <p>Imagens e arquivos com proteção contra cópia</p>
       </div>
     </div>
   </section>
@@ -1013,6 +1188,7 @@
      ============================================ -->
 <footer class="footer">
   <p>© 2026 Cleisiane Barreto • PedagoArt Kids Store • Materiais pedagógicos criados com carinho</p>
+  <div class="protection-notice">🔒 Todo o conteúdo deste site é protegido. Não é permitido copiar ou distribuir as imagens.</div>
 </footer>
 
 <!-- ============================================
@@ -1023,77 +1199,141 @@
 </div>
 
 <!-- ============================================
-     🎫 MODAL
+     🎫 MODAL DE ARQUIVOS
      ============================================ -->
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <div style="font-size: 4rem;">🎉</div>
-    <h3>Produto Selecionado!</h3>
-    <p>Complete sua compra pelo WhatsApp para receber o link de download imediato.</p>
-    <a href="https://wa.me/qr/QMLMG265QVDKE1" class="btn-whatsapp" style="display: inline-block; padding: 0.8rem 2rem;">Falar com a Pedagoga</a>
-    <br>
-    <button class="modal-close" onclick="closeModal()">Fechar</button>
+<div id="modalFiles" class="modal-files">
+  <div class="modal-files-content">
+    <div id="modalFilesContent"></div>
+    <button class="modal-close-files" onclick="closeModalFiles()">Fechar</button>
   </div>
 </div>
 
 <script>
   // ============================================
-  // 📦 BANCO DE PRODUTOS COM PREÇOS VISÍVEIS
-  // VALOR MÍNIMO: R$ 14,90
+  // 🛡️ PROTEÇÃO DE IMAGENS
+  // ============================================
+  
+  // 1. Bloquear clique direito em todas as imagens
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+      return false;
+    });
+  });
+  
+  // 2. Bloquear arrastar de imagens globalmente
+  window.addEventListener('dragstart', (e) => {
+    if (e.target.tagName === 'IMG') {
+      e.preventDefault();
+      return false;
+    }
+  });
+  
+  // 3. Desativar Ctrl+S, Ctrl+U, Ctrl+Shift+I (proteção adicional)
+  document.addEventListener('keydown', (e) => {
+    // Bloquear Ctrl+S (salvar página)
+    if (e.ctrlKey && e.key === 's') {
+      e.preventDefault();
+      alert('🔒 Salvamento de página não permitido para proteger o conteúdo.');
+      return false;
+    }
+    // Bloquear Ctrl+U (ver código fonte)
+    if (e.ctrlKey && e.key === 'u') {
+      e.preventDefault();
+      alert('🔒 Visualização do código fonte não permitida.');
+      return false;
+    }
+    // Bloquear Ctrl+Shift+I (inspecionar)
+    if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+      e.preventDefault();
+      alert('🔒 Ferramentas de desenvolvedor bloqueadas para proteger o conteúdo.');
+      return false;
+    }
+    // Bloquear F12
+    if (e.key === 'F12') {
+      e.preventDefault();
+      alert('🔒 Ferramentas de desenvolvedor bloqueadas para proteger o conteúdo.');
+      return false;
+    }
+  });
+  
+  // 4. Aviso no console (para desencorajar)
+  console.log('%c🔒 CONTEÚDO PROTEGIDO', 'color: red; font-size: 16px; font-weight: bold;');
+  console.log('%cImagens e arquivos deste site são protegidos contra cópia.', 'color: orange; font-size: 12px;');
+
+  // ============================================
+  // 📦 BANCO DE PRODUTOS COM VÁRIOS ARQUIVOS DENTRO
   // ============================================
   const products = [
     {
       id: 1,
       title: "🎉 Datas Comemorativas",
-      description: "Artes, painéis, lembrancinhas e murais temáticos para todo o calendário escolar. Do 1º ao 5º ano.",
-      price: "R$ 14,90",
+      description: "Kit completo com atividades para todas as datas comemorativas do ano letivo.",
+      price: "R$ 19,90",
       image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=900&q=80",
-      category: "datas"
+      category: "datas",
+      files: [
+        { name: "Carnaval - Máscaras e atividades.pdf", size: "2.5 MB", icon: "🎭", url: "#" },
+        { name: "Páscoa - Lembrancinhas e mural.pdf", size: "3.1 MB", icon: "🐰", url: "#" },
+        { name: "Dia das Mães - Atividades e cartões.pdf", size: "2.8 MB", icon: "💐", url: "#" },
+        { name: "Festa Junina - Painel e atividades.pdf", size: "4.2 MB", icon: "🌽", url: "#" },
+        { name: "Dia dos Pais - Atividades.pdf", size: "2.3 MB", icon: "👨", url: "#" },
+        { name: "Independência do Brasil.pdf", size: "3.5 MB", icon: "🇧🇷", url: "#" },
+        { name: "Dia das Crianças - Brincadeiras.pdf", size: "3.0 MB", icon: "🧸", url: "#" },
+        { name: "Natal - Atividades e enfeites.pdf", size: "5.0 MB", icon: "🎄", url: "#" }
+      ]
     },
     {
       id: 2,
-      title: "🎨 Artes Sazonais",
-      description: "Murais coloridos, lembrancinhas e artes temáticas para todas as épocas do ano.",
-      price: "R$ 14,90",
-      image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=900&q=80",
-      category: "datas"
+      title: "📖 Alfabetização Completa",
+      description: "Atividades de leitura, escrita e coordenação motora para 1º ao 3º ano.",
+      price: "R$ 24,90",
+      image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
+      category: "alfabetizacao",
+      files: [
+        { name: "Apostila de Alfabetização - Volume 1.pdf", size: "8.5 MB", icon: "📘", url: "#" },
+        { name: "Apostila de Alfabetização - Volume 2.pdf", size: "7.8 MB", icon: "📗", url: "#" },
+        { name: "Atividades Silábicas.pdf", size: "4.2 MB", icon: "🔤", url: "#" },
+        { name: "Treino da Coordenação Motora.pdf", size: "3.5 MB", icon: "✍️", url: "#" },
+        { name: "Jogos de Leitura.pdf", size: "5.0 MB", icon: "🎲", url: "#" },
+        { name: "Produção de Texto - 1º ano.pdf", size: "3.8 MB", icon: "📝", url: "#" }
+      ]
     },
     {
       id: 3,
-      title: "📖 Alfabetização Completa",
-      description: "Atividades de leitura, escrita, coordenação motora e desenvolvimento infantil. 1º ao 3º ano.",
-      price: "R$ 24,90",
-      image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
-      category: "alfabetizacao"
+      title: "🏆 Kits Premium Professor",
+      description: "Pacote completo com planners, calendários e materiais exclusivos.",
+      price: "R$ 49,90",
+      image: "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=900&q=80",
+      category: "kits",
+      files: [
+        { name: "Planejamento Anual BNCC.pdf", size: "12 MB", icon: "📅", url: "#" },
+        { name: "Planner do Professor - Editável.pptx", size: "15 MB", icon: "📊", url: "#" },
+        { name: "Calendário Escolar 2026.pdf", size: "2.5 MB", icon: "🗓️", url: "#" },
+        { name: "Registro de Frequência.pdf", size: "1.8 MB", icon: "✅", url: "#" },
+        { name: "Fichas de Avaliação.pdf", size: "3.2 MB", icon: "📋", url: "#" },
+        { name: "Bônus: 50 Atividades Extras.pdf", size: "6.5 MB", icon: "🎁", url: "#" }
+      ]
     },
     {
       id: 4,
       title: "🧮 Matemática Lúdica",
-      description: "Jogos e atividades para aprender matemática brincando. 1º ao 5º ano.",
+      description: "Jogos e atividades matemáticas para aprender brincando.",
       price: "R$ 27,90",
       image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=900&q=80",
-      category: "alfabetizacao"
-    },
-    {
-      id: 5,
-      title: "🏆 Kits Premium",
-      description: "Pacotes completos com jogos, planners, atividades e materiais exclusivos. 1º ao 5º ano.",
-      price: "R$ 49,90",
-      image: "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=900&q=80",
-      category: "kits"
-    },
-    {
-      id: 6,
-      title: "📚 Planejamento BNCC",
-      description: "Planejamento anual completo com habilidades e avaliações para todos os anos.",
-      price: "R$ 59,90",
-      image: "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=900&q=80",
-      category: "kits"
+      category: "alfabetizacao",
+      files: [
+        { name: "Números e Quantidades.pdf", size: "4.5 MB", icon: "🔢", url: "#" },
+        { name: "Jogos de Adição e Subtração.pdf", size: "5.2 MB", icon: "🧮", url: "#" },
+        { name: "Tabuada Divertida.pdf", size: "3.8 MB", icon: "✖️", url: "#" },
+        { name: "Problemas Matemáticos - 1º ciclo.pdf", size: "4.0 MB", icon: "🧩", url: "#" },
+        { name: "Formas Geométricas.pdf", size: "3.0 MB", icon: "🔺", url: "#" }
+      ]
     }
   ];
 
   // ============================================
-  // 🎨 FUNÇÃO PARA RENDERIZAR PRODUTOS
+  // 🎨 FUNÇÃO PARA RENDERIZAR PRODUTOS COM IMAGENS PROTEGIDAS
   // ============================================
   function renderProducts(filter = "all") {
     const container = document.getElementById("productsGrid");
@@ -1115,20 +1355,30 @@
     for (let product of filteredProducts) {
       html += `
         <div class="product-card">
-          <img class="product-image" src="${product.image}" alt="${product.title}" loading="lazy">
+          <div class="product-image-container">
+            <img class="product-image" src="${product.image}" alt="${product.title}" loading="lazy" draggable="false" oncontextmenu="return false">
+          </div>
           <div class="product-info">
             <h3 class="product-title">${product.title}</h3>
             <p class="product-description">${product.description}</p>
             <div class="product-price">💰 ${product.price}</div>
             <div class="product-buttons">
-              <button onclick="openModal('${product.title}', '${product.price}')" class="btn-buy">🛒 Ver Produto</button>
-              <a href="https://wa.me/qr/QMLMG265QVDKE1?text=Olá! Gostaria de comprar ${product.title} - ${product.price}" class="btn-whats-product">💬 Comprar via WhatsApp</a>
+              <button onclick="openModalFiles(${product.id})" class="btn-buy">📂 Ver Arquivos (${product.files.length} itens)</button>
+              <a href="https://wa.me/qr/QMLMG265QVDKE1?text=Olá! Gostaria de comprar o ${product.title} - ${product.price}" class="btn-whats-product">💬 Comprar Kit Completo</a>
             </div>
           </div>
         </div>
       `;
     }
     container.innerHTML = html;
+    
+    // Reaplicar proteção nas imagens recém-criadas
+    document.querySelectorAll('.product-image').forEach(img => {
+      img.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        return false;
+      });
+    });
   }
 
   // ============================================
@@ -1147,38 +1397,55 @@
   }
 
   // ============================================
-  // 🎫 FUNÇÕES DO MODAL
+  // 📂 FUNÇÃO PARA ABRIR MODAL COM ARQUIVOS DO PRODUTO
   // ============================================
-  function openModal(productName, productPrice) {
-    const modal = document.getElementById('modal');
-    const modalContent = modal.querySelector('.modal-content');
-    
-    // Atualiza o conteúdo do modal com o produto selecionado
-    modalContent.innerHTML = `
-      <div style="font-size: 4rem;">🎉</div>
-      <h3 style="color: white; margin: 1rem 0;">${productName}</h3>
-      <p style="color: #94a3b8; margin-bottom: 0.5rem;">Valor: <strong style="color: #10b981; font-size: 1.5rem;">${productPrice}</strong></p>
-      <p style="color: #94a3b8; margin-bottom: 1.5rem;">Complete sua compra pelo WhatsApp para receber o link de download imediato.</p>
-      <a href="https://wa.me/qr/QMLMG265QVDKE1?text=Olá! Gostaria de comprar ${productName} - ${productPrice}" class="btn-whatsapp" style="display: inline-block; padding: 0.8rem 2rem;">💬 Falar com a Pedagoga</a>
-      <br>
-      <button class="modal-close" onclick="closeModal()" style="background: none; border: none; color: #64748b; cursor: pointer; margin-top: 1rem;">Fechar</button>
+  function openModalFiles(productId) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+
+    let filesHtml = `
+      <h2>📦 ${product.title}</h2>
+      <div class="modal-price">💰 ${product.price} - Pacote completo</div>
+      <p style="color: #94a3b8; margin-bottom: 1rem;">📌 ${product.files.length} arquivos disponíveis:</p>
+      <div class="files-list">
     `;
-    
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
+
+    for (let file of product.files) {
+      filesHtml += `
+        <div class="file-item">
+          <div class="file-info">
+            <div class="file-icon">${file.icon}</div>
+            <div>
+              <div class="file-name">${file.name}</div>
+              <div class="file-size">📄 ${file.size}</div>
+            </div>
+          </div>
+          <a href="${file.url}" class="btn-download" download>📥 Baixar</a>
+        </div>
+      `;
+    }
+
+    filesHtml += `
+      </div>
+      <a href="https://wa.me/qr/QMLMG265QVDKE1?text=Olá! Gostaria de comprar o ${product.title} - ${product.price}" class="btn-buy-kit">💬 Comprar Kit Completo (${product.files.length} arquivos)</a>
+    `;
+
+    const modalContent = document.getElementById("modalFilesContent");
+    modalContent.innerHTML = filesHtml;
+    document.getElementById("modalFiles").style.display = "flex";
+    document.body.style.overflow = "hidden";
   }
 
-  function closeModal() {
-    const modal = document.getElementById('modal');
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
+  function closeModalFiles() {
+    document.getElementById("modalFiles").style.display = "none";
+    document.body.style.overflow = "auto";
   }
 
   // Fechar modal clicando fora
   window.onclick = function(event) {
-    const modal = document.getElementById('modal');
+    const modal = document.getElementById('modalFiles');
     if (event.target === modal) {
-      closeModal();
+      closeModalFiles();
     }
   }
 
