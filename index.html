@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="PedagoArt Kids Store - Materiais pedagógicos digitais premium para educação infantil e ensino fundamental">
-  <meta name="theme-color" content="#FF6B35">
-  <title>PedagoArt Kids Store | Materiais Pedagógicos Infantis</title>
-  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>PedagoArt Kids Store</title>
   <style>
-    /* ============================================
-       🎨 CORES DO UNIVERSO INFANTIL
-       ============================================ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     :root {
       --amarelo-sol: #FFD93D;
       --laranja-divertido: #FF9B42;
@@ -18,146 +18,41 @@
       --roxo-magico: #A855F7;
       --azul-ceu: #38BDF8;
       --verde-natureza: #4ADE80;
-      --vermelho-amor: #FB7185;
-      --cor-fundo: linear-gradient(135deg, #FFF9E6 0%, #FFE8F0 50%, #E0F2FE 100%);
-      --cor-card: rgba(255, 255, 255, 0.95);
-      --cor-texto: #4A3A2A;
-      --cor-texto-claro: #8B6B4D;
-      --sucesso: #22C55E;
       --whatsapp: #25D366;
-      --whatsapp-dark: #128C7E;
-      
-      --sombra-colorida: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.02);
-      --sombra-flutuante: 0 20px 35px -10px rgba(0,0,0,0.2);
-      --borda-arredondada: 2rem;
-      --borda-pequena: 1rem;
-      
-      --transicao: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      -webkit-user-drag: none;
     }
 
     body {
-      font-family: 'Poppins', 'Comic Neue', sans-serif;
-      background: var(--cor-fundo);
-      color: var(--cor-texto);
-      line-height: 1.6;
-      overflow-x: hidden;
-      position: relative;
+      font-family: 'Segoe UI', 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #FFF9E6 0%, #FFE8F0 50%, #E0F2FE 100%);
+      color: #4A3A2A;
+      min-height: 100vh;
     }
 
-    /* ============================================
-       🎈 ELEMENTOS FLUTUANTES INFANTIS
-       ============================================ */
-    .floating-elements {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    .floating-elements::before {
-      content: '🌈';
-      position: absolute;
-      font-size: 5rem;
-      top: 10%;
-      left: 5%;
-      animation: float 8s ease-in-out infinite;
-    }
-
-    .floating-elements::after {
-      content: '⭐';
-      position: absolute;
-      font-size: 3rem;
-      bottom: 15%;
-      right: 8%;
-      animation: float 6s ease-in-out infinite reverse;
-    }
-
-    .floating-star {
-      position: absolute;
-      font-size: 2rem;
-      animation: float 5s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(10deg); }
-    }
-
-    /* ============================================
-       🖌️ SCROLLBAR COLORIDA
-       ============================================ */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #FFE0B5;
-      border-radius: 10px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: var(--laranja-divertido);
-      border-radius: 10px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--rosa-pink);
-    }
-
-    /* ============================================
-       🏠 CABEÇALHO DIVERTIDO
-       ============================================ */
+    /* CABEÇALHO */
     .header {
       position: fixed;
       top: 0;
       width: 100%;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
       backdrop-filter: blur(10px);
       border-bottom: 3px solid var(--amarelo-sol);
-      box-shadow: var(--sombra-colorida);
+      padding: 0.8rem 2rem;
     }
 
     .header-container {
       max-width: 1280px;
       margin: 0 auto;
-      padding: 0.8rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .logo-icon {
-      font-size: 2.5rem;
-      animation: bounce 2s ease-in-out infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
+      flex-wrap: wrap;
+      gap: 1rem;
     }
 
     .logo h1 {
-      font-size: 1.6rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--laranja-divertido), var(--rosa-pink), var(--roxo-magico));
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, var(--laranja-divertido), var(--rosa-pink));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -165,322 +60,281 @@
 
     .logo p {
       font-size: 0.7rem;
-      color: var(--cor-texto-claro);
+      color: #8B6B4D;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 2rem;
+    .admin-btn {
+      background: var(--roxo-magico);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.2s;
     }
 
-    .nav-links a {
-      text-decoration: none;
-      font-weight: 600;
-      color: var(--cor-texto);
-      transition: var(--transicao);
-      position: relative;
-      padding: 0.5rem 0;
+    .admin-btn:hover {
+      transform: scale(1.05);
     }
 
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
+    /* MODAL DE LOGIN */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
       left: 0;
-      width: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--amarelo-sol), var(--rosa-pink));
-      transition: var(--transicao);
-      border-radius: 10px;
-    }
-
-    .nav-links a:hover::after {
       width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
     }
 
-    .nav-links a:hover {
-      color: var(--laranja-divertido);
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 2rem;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
     }
 
-    /* ============================================
-       🎯 HERO SECTION INFANTIL
-       ============================================ */
-    .hero {
-      min-height: 100vh;
+    .modal-content input {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 1rem 0;
+      border: 2px solid var(--amarelo-sol);
+      border-radius: 1rem;
+    }
+
+    .modal-content button {
+      background: var(--laranja-divertido);
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* PAINEL ADMIN */
+    .admin-panel {
+      display: none;
+      max-width: 1400px;
+      margin: 100px auto 2rem;
+      padding: 2rem;
+      background: white;
+      border-radius: 2rem;
+    }
+
+    .admin-header {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      padding: 8rem 2rem 4rem;
-      max-width: 1280px;
-      margin: 0 auto;
-      position: relative;
-      gap: 3rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
 
-    .hero-content {
-      flex: 1;
-      animation: fadeInUp 0.8s ease;
+    .btn-add {
+      background: var(--verde-natureza);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      font-weight: bold;
     }
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .form-produto {
+      background: #FFF9E6;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      margin-bottom: 2rem;
+      border: 2px solid var(--amarelo-sol);
+      display: none;
     }
 
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 0.3rem;
+    }
+
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid var(--amarelo-sol);
+      border-radius: 1rem;
+      font-family: inherit;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .btn-salvar {
+      background: var(--verde-natureza);
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn-cancelar {
+      background: #ccc;
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      margin-left: 0.5rem;
+    }
+
+    .btn-site {
+      background: var(--laranja-divertido);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      cursor: pointer;
+    }
+
+    /* LISTA DE PRODUTOS NO ADMIN */
+    .admin-products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .admin-product-card {
+      background: #FFF9E6;
+      border: 2px solid var(--amarelo-sol);
+      border-radius: 1rem;
+      padding: 1rem;
+    }
+
+    .admin-product-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+    }
+
+    .admin-product-actions {
+      display: flex;
       gap: 0.5rem;
-      background: var(--amarelo-sol);
-      color: var(--cor-texto);
-      padding: 0.5rem 1.2rem;
-      border-radius: 100px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      box-shadow: var(--sombra-colorida);
+      margin-top: 0.5rem;
+    }
+
+    .btn-edit, .btn-delete {
+      flex: 1;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn-edit {
+      background: var(--azul-ceu);
+      color: white;
+    }
+
+    .btn-delete {
+      background: #FB7185;
+      color: white;
+    }
+
+    .images-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.5rem 0;
+    }
+
+    .image-item {
+      width: 50px;
+      height: 50px;
+    }
+
+    .image-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0.5rem;
+    }
+
+    .add-image-input {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .add-image-input input {
+      flex: 1;
+      padding: 0.5rem;
+      border: 1px solid var(--amarelo-sol);
+      border-radius: 0.5rem;
+    }
+
+    /* SITE PRINCIPAL */
+    .main-site {
+      padding-top: 80px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 3rem 2rem;
     }
 
     .hero h2 {
-      font-size: 3.5rem;
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, var(--laranja-divertido), var(--rosa-pink), var(--roxo-magico));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      color: var(--cor-texto-claro);
-      margin-bottom: 2rem;
-      max-width: 500px;
-    }
-
-    .hero-stats {
-      display: flex;
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .stat {
-      text-align: center;
-      background: white;
-      padding: 0.8rem 1.5rem;
-      border-radius: 2rem;
-      box-shadow: var(--sombra-colorida);
-    }
-
-    .stat-number {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: var(--laranja-divertido);
-    }
-
-    .stat-label {
-      font-size: 0.75rem;
-      color: var(--cor-texto-claro);
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--laranja-divertido), var(--rosa-pink));
-      color: white;
-      padding: 1rem 2rem;
-      border-radius: 100px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: var(--transicao);
-      box-shadow: var(--sombra-colorida);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--sombra-flutuante);
-    }
-
-    .btn-whatsapp {
-      background: var(--whatsapp);
-      color: white;
-      padding: 1rem 2rem;
-      border-radius: 100px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: var(--transicao);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .btn-whatsapp:hover {
-      background: var(--whatsapp-dark);
-      transform: translateY(-3px);
-    }
-
-    .hero-image {
-      flex: 1;
-      position: relative;
-      animation: fadeInScale 0.8s ease;
-    }
-
-    @keyframes fadeInScale {
-      from {
-        opacity: 0;
-        transform: scale(0.9);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .hero-image img {
-      width: 100%;
-      border-radius: var(--borda-arredondada);
-      box-shadow: var(--sombra-flutuante);
-      border: 3px solid white;
-    }
-
-    .hero-floating-card {
-      position: absolute;
-      bottom: -15px;
-      left: -15px;
-      background: white;
-      border-radius: var(--borda-pequena);
-      padding: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      box-shadow: var(--sombra-colorida);
-      border: 2px solid var(--amarelo-sol);
-    }
-
-    /* ============================================
-       🔍 FILTROS COLORIDOS
-       ============================================ */
-    .filters-section {
-      max-width: 1280px;
-      margin: 2rem auto;
-      padding: 0 2rem;
-    }
-
-    .filters-title {
-      text-align: center;
-      font-size: 2rem;
-      font-weight: 800;
-      margin-bottom: 1.5rem;
+      font-size: 2.5rem;
       background: linear-gradient(135deg, var(--laranja-divertido), var(--rosa-pink));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-    }
-
-    .filters-container {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .filter-btn {
-      background: white;
-      border: 2px solid var(--amarelo-sol);
-      padding: 0.6rem 1.5rem;
-      border-radius: 100px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: var(--transicao);
-      color: var(--cor-texto);
-    }
-
-    .filter-btn:hover {
-      background: var(--amarelo-sol);
-      transform: translateY(-2px);
-    }
-
-    .filter-btn.active {
-      background: linear-gradient(135deg, var(--laranja-divertido), var(--rosa-pink));
-      border-color: transparent;
-      color: white;
-    }
-
-    /* ============================================
-       🛍️ PRODUTOS DIVERTIDOS
-       ============================================ */
-    .products-section {
-      padding: 2rem 2rem 4rem;
-      max-width: 1280px;
-      margin: 0 auto;
     }
 
     .products-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 2rem;
+      max-width: 1280px;
+      margin: 2rem auto;
+      padding: 0 2rem;
     }
 
     .product-card {
       background: white;
-      border-radius: var(--borda-arredondada);
+      border-radius: 1.5rem;
       overflow: hidden;
-      transition: var(--transicao);
-      box-shadow: var(--sombra-colorida);
-      border: 2px solid rgba(255, 217, 61, 0.3);
-      position: relative;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+      border: 2px solid var(--amarelo-sol);
+      transition: transform 0.3s;
     }
 
     .product-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--sombra-flutuante);
-      border-color: var(--amarelo-sol);
-    }
-
-    .product-badge {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: var(--amarelo-sol);
-      color: var(--cor-texto);
-      padding: 0.3rem 0.8rem;
-      border-radius: 100px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      z-index: 2;
-    }
-
-    .product-image-container {
-      position: relative;
-      width: 100%;
-      height: 220px;
-      overflow: hidden;
-      background: linear-gradient(135deg, #FFF9E6, #FFE8F0);
+      transform: translateY(-5px);
     }
 
     .product-image {
       width: 100%;
-      height: 100%;
+      height: 200px;
       object-fit: cover;
-      transition: var(--transicao);
-      pointer-events: none;
-    }
-
-    .product-card:hover .product-image {
-      transform: scale(1.05);
+      background: #f0f0f0;
     }
 
     .product-info {
@@ -490,441 +344,98 @@
     .product-title {
       font-size: 1.3rem;
       font-weight: 800;
-      color: var(--cor-texto);
       margin-bottom: 0.5rem;
     }
 
-    .product-description {
-      color: var(--cor-texto-claro);
-      font-size: 0.85rem;
-      margin-bottom: 1rem;
-      line-height: 1.5;
-    }
-
     .product-price {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 800;
-      color: var(--sucesso);
-      margin-bottom: 1rem;
-      display: block;
+      color: var(--verde-natureza);
+      margin: 0.5rem 0;
     }
 
     .btn-gallery {
       background: linear-gradient(135deg, var(--laranja-divertido), var(--rosa-pink));
       color: white;
-      text-align: center;
-      padding: 0.8rem;
-      border-radius: 100px;
-      font-weight: 700;
-      transition: var(--transicao);
-      cursor: pointer;
       border: none;
+      padding: 0.8rem;
+      border-radius: 2rem;
       width: 100%;
-      font-family: inherit;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .gallery-preview {
       display: flex;
-      align-items: center;
-      justify-content: center;
       gap: 0.5rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
     }
 
-    .btn-gallery:hover {
-      transform: scale(0.98);
+    .gallery-preview img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      border: 2px solid var(--amarelo-sol);
     }
 
-    /* ============================================
-       🎫 MODAL INFANTIL
-       ============================================ */
-    .modal-gallery {
-      display: none;
+    /* MODAIS */
+    .modal-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.8);
-      backdrop-filter: blur(8px);
+      background: rgba(0,0,0,0.9);
       z-index: 2000;
+      display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    .modal-gallery-content {
+    .modal-box {
       background: white;
-      border-radius: var(--borda-arredondada);
-      max-width: 1000px;
+      max-width: 900px;
       width: 90%;
-      max-height: 85vh;
+      max-height: 80vh;
       overflow-y: auto;
+      border-radius: 2rem;
       padding: 2rem;
-      animation: modalIn 0.4s ease;
-      border: 3px solid var(--amarelo-sol);
     }
 
-    .modal-gallery-content h2 {
-      color: var(--cor-texto);
-      margin-bottom: 0.5rem;
-      text-align: center;
-      font-size: 1.8rem;
-    }
-
-    .modal-price {
-      color: var(--sucesso);
-      font-size: 1.5rem;
-      font-weight: 800;
-      text-align: center;
-      margin-bottom: 0.5rem;
+    .close-modal {
+      background: #ccc;
+      border: none;
+      padding: 0.5rem 2rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      margin-top: 1rem;
     }
 
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin: 1.5rem 0;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
     }
 
     .gallery-item {
       background: #FFF9E6;
       border: 2px solid var(--amarelo-sol);
-      border-radius: var(--borda-pequena);
+      border-radius: 1rem;
       overflow: hidden;
-      transition: var(--transicao);
     }
 
-    .gallery-item:hover {
-      transform: translateY(-5px);
-      border-color: var(--rosa-pink);
-    }
-
-    .gallery-image {
+    .gallery-item img {
       width: 100%;
-      height: 160px;
+      height: 150px;
       object-fit: cover;
       cursor: pointer;
     }
 
-    .gallery-caption {
-      padding: 0.8rem;
-      text-align: center;
-      font-weight: 700;
-      color: var(--cor-texto);
-      background: white;
-    }
-
-    .gallery-price {
-      padding: 0.5rem;
-      text-align: center;
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: var(--sucesso);
-      background: rgba(34, 197, 94, 0.1);
-    }
-
-    .gallery-buttons {
-      display: flex;
-      gap: 0.5rem;
-      padding: 0.8rem;
-      background: white;
-    }
-
-    .btn-buy-single {
-      flex: 1;
-      background: rgba(37, 211, 102, 0.15);
-      border: 2px solid var(--whatsapp);
-      color: var(--whatsapp);
-      text-align: center;
-      padding: 0.5rem;
-      border-radius: 2rem;
-      text-decoration: none;
-      font-weight: 600;
-      transition: var(--transicao);
-    }
-
-    .btn-buy-single:hover {
-      background: var(--whatsapp);
-      color: white;
-    }
-
-    .btn-view-zoom {
-      flex: 1;
-      background: rgba(255, 107, 53, 0.15);
-      border: 2px solid var(--laranja-divertido);
-      color: var(--laranja-divertido);
-      text-align: center;
-      padding: 0.5rem;
-      border-radius: 2rem;
-      font-weight: 600;
-      transition: var(--transicao);
-      cursor: pointer;
-    }
-
-    .btn-view-zoom:hover {
-      background: var(--laranja-divertido);
-      color: white;
-    }
-
-    .divider {
-      display: flex;
-      align-items: center;
-      text-align: center;
-      margin: 1rem 0;
-      color: var(--cor-texto-claro);
-    }
-
-    .divider::before,
-    .divider::after {
-      content: '';
-      flex: 1;
-      border-bottom: 2px dashed var(--amarelo-sol);
-    }
-
-    .divider::before {
-      margin-right: 1rem;
-    }
-
-    .divider::after {
-      margin-left: 1rem;
-    }
-
-    .btn-buy-kit {
-      background: var(--whatsapp);
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      border-radius: 100px;
-      text-decoration: none;
-      font-weight: 700;
-      display: block;
-      margin-top: 0.5rem;
-      transition: var(--transicao);
-    }
-
-    .btn-buy-kit:hover {
-      background: var(--whatsapp-dark);
-      transform: scale(1.02);
-    }
-
-    /* ============================================
-       ⭐ BENEFÍCIOS
-       ============================================ */
-    .benefits-section {
-      padding: 4rem 2rem;
-      background: linear-gradient(135deg, #FFF9E6, #FFE8F0);
-      margin: 2rem 0;
-    }
-
-    .benefits-title {
-      text-align: center;
-      font-size: 2rem;
-      font-weight: 800;
-      margin-bottom: 2rem;
-      background: linear-gradient(135deg, var(--laranja-divertido), var(--rosa-pink));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem;
-      max-width: 1280px;
-      margin: 0 auto;
-    }
-
-    .benefit-card {
-      background: white;
-      border-radius: var(--borda-pequena);
-      padding: 2rem;
-      text-align: center;
-      transition: var(--transicao);
-      border: 2px solid var(--amarelo-sol);
-    }
-
-    .benefit-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--rosa-pink);
-    }
-
-    .benefit-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    .benefit-card h4 {
-      font-size: 1.2rem;
-      color: var(--cor-texto);
-      margin-bottom: 0.5rem;
-    }
-
-    .benefit-card p {
-      color: var(--cor-texto-claro);
-      font-size: 0.85rem;
-    }
-
-    /* ============================================
-       👩‍🏫 SOBRE A PEDAGOGA
-       ============================================ */
-    .about-teacher {
-      max-width: 1280px;
-      margin: 3rem auto;
-      padding: 2rem;
-    }
-
-    .teacher-card {
-      background: linear-gradient(135deg, #FFE8F0, #FFF9E6);
-      border: 3px solid var(--amarelo-sol);
-      border-radius: var(--borda-arredondada);
-      padding: 3rem;
-      text-align: center;
-    }
-
-    .teacher-avatar {
-      font-size: 5rem;
-      margin-bottom: 1rem;
-    }
-
-    .teacher-card h3 {
-      font-size: 1.8rem;
-      color: var(--cor-texto);
-      margin-bottom: 1rem;
-    }
-
-    .teacher-card p {
-      color: var(--cor-texto-claro);
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.8;
-    }
-
-    .teacher-signature {
-      margin-top: 1rem;
-      font-style: italic;
-      color: var(--rosa-pink);
-      font-weight: 600;
-    }
-
-    /* ============================================
-       📞 CTA
-       ============================================ */
-    .cta-section {
-      padding: 4rem 2rem;
-      text-align: center;
-      background: linear-gradient(135deg, var(--laranja-divertido), var(--rosa-pink));
-      margin: 2rem 0;
-    }
-
-    .cta-section h3 {
-      font-size: 2rem;
-      color: white;
-      margin-bottom: 1rem;
-    }
-
-    .cta-section p {
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.9);
-      margin-bottom: 2rem;
-    }
-
-    .cta-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .cta-whats {
-      background: white;
-      color: var(--laranja-divertido);
-      padding: 1rem 2rem;
-      border-radius: 100px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: var(--transicao);
-    }
-
-    .cta-whats:hover {
-      transform: scale(1.05);
-    }
-
-    .cta-email {
-      background: transparent;
-      border: 2px solid white;
-      color: white;
-      padding: 1rem 2rem;
-      border-radius: 100px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: var(--transicao);
-    }
-
-    .cta-email:hover {
-      background: white;
-      color: var(--laranja-divertido);
-      transform: scale(1.05);
-    }
-
-    /* ============================================
-       🦶 FOOTER
-       ============================================ */
-    .footer {
-      background: #4A3A2A;
-      padding: 2rem;
-      text-align: center;
-    }
-
-    .footer p {
-      color: rgba(255,255,255,0.7);
-    }
-
-    .protection-notice {
-      text-align: center;
-      padding: 0.5rem;
-      font-size: 0.7rem;
-      color: rgba(255,255,255,0.5);
-      margin-top: 0.5rem;
-    }
-
-    /* ============================================
-       💬 WHATSAPP FLUTUANTE
-       ============================================ */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      z-index: 1000;
-    }
-
-    .whatsapp-float a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 60px;
-      height: 60px;
-      background: var(--whatsapp);
-      border-radius: 50%;
-      font-size: 2rem;
-      text-decoration: none;
-      box-shadow: var(--sombra-flutuante);
-      transition: var(--transicao);
-      animation: pulseWhats 2s infinite;
-    }
-
-    @keyframes pulseWhats {
-      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-      70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-    }
-
-    .whatsapp-float a:hover {
-      transform: scale(1.1);
-      animation: none;
-    }
-
-    /* ============================================
-       🖼️ MODAL ZOOM
-       ============================================ */
-    .modal-zoom {
-      display: none;
+    .image-zoom {
       position: fixed;
       top: 0;
       left: 0;
@@ -932,503 +443,492 @@
       height: 100%;
       background: rgba(0,0,0,0.95);
       z-index: 3000;
+      display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
     }
 
-    .modal-zoom img {
+    .image-zoom img {
       max-width: 90%;
       max-height: 90%;
       border-radius: 1rem;
-      box-shadow: var(--sombra-flutuante);
-      border: 3px solid white;
     }
 
-    .modal-zoom .close-zoom {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      color: white;
-      font-size: 2rem;
-      cursor: pointer;
-      background: none;
-      border: none;
-    }
-
-    @keyframes modalIn {
-      from {
-        opacity: 0;
-        transform: scale(0.9);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    /* ============================================
-       📱 RESPONSIVIDADE
-       ============================================ */
     @media (max-width: 768px) {
-      .hero {
-        flex-direction: column;
-        text-align: center;
-        padding-top: 6rem;
+      .form-row {
+        grid-template-columns: 1fr;
       }
-      
       .hero h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
       }
-      
-      .hero p {
-        margin-left: auto;
-        margin-right: auto;
-      }
-      
-      .hero-stats {
-        justify-content: center;
-      }
-      
-      .hero-buttons {
-        justify-content: center;
-      }
-      
-      .nav-links {
-        display: none;
-      }
-      
-      .filters-title {
-        font-size: 1.5rem;
-      }
-      
       .products-grid {
         grid-template-columns: 1fr;
-      }
-      
-      .gallery-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .gallery-buttons {
-        flex-direction: column;
       }
     }
   </style>
 </head>
 <body>
 
-<div class="floating-elements">
-  <div class="floating-star" style="top: 15%; left: 85%;">🌟</div>
-  <div class="floating-star" style="top: 70%; left: 10%;">🎈</div>
-  <div class="floating-star" style="top: 40%; left: 90%;">✨</div>
-  <div class="floating-star" style="top: 80%; left: 80%;">🦄</div>
-  <div class="floating-star" style="top: 20%; left: 15%;">🍎</div>
-</div>
-
-<!-- ============================================
-     🏠 CABEÇALHO
-     ============================================ -->
+<!-- CABEÇALHO -->
 <header class="header">
   <div class="header-container">
     <div class="logo">
-      <div class="logo-icon">🎨</div>
-      <div>
-        <h1>PedagoArt Kids</h1>
-        <p>✨ Materiais Pedagógicos Infantis</p>
-      </div>
+      <h1>🎨 PedagoArt Kids</h1>
+      <p>Materiais Pedagógicos Infantis</p>
     </div>
-    <nav class="nav-links">
-      <a href="#home">🏠 Início</a>
-      <a href="#products">📚 Catálogo</a>
-      <a href="#benefits">⭐ Benefícios</a>
-      <a href="#contact">💬 Contato</a>
-    </nav>
+    <button class="admin-btn" onclick="openLoginModal()">🔒 Admin</button>
   </div>
 </header>
 
-<main>
-  <!-- ============================================
-       🎯 HERO SECTION
-       ============================================ -->
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <div class="hero-badge">
-        <span>🎉</span> Criado com amor para educadores
-      </div>
-      <h2>Aprender nunca foi tão divertido!</h2>
-      <p>Materiais pedagógicos exclusivos para educação infantil e ensino fundamental. Coloridos, lúdicos e alinhados à BNCC.</p>
-      <div class="hero-stats">
-        <div class="stat">
-          <div class="stat-number">+50</div>
-          <div class="stat-label">Arquivos</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">⭐ 5.0</div>
-          <div class="stat-label">Avaliações</div>
-        </div>
-      </div>
-      <div class="hero-buttons">
-        <a href="#products" class="btn-primary">🎨 Ver Catálogo</a>
-        <a href="https://wa.me/qr/QMLMG265QVDKE1" class="btn-whatsapp">💬 Comprar no WhatsApp</a>
-      </div>
-    </div>
-    <div class="hero-image">
-      <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80" alt="Materiais pedagógicos">
-      <div class="hero-floating-card">
-        <span style="font-size: 2rem;">📚</span>
-        <div>
-          <p style="font-weight: 700;">Prontos para usar</p>
-          <p style="font-size: 0.7rem;">Imprima e aplique hoje</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       🔍 FILTROS
-       ============================================ -->
-  <div class="filters-section">
-    <h3 class="filters-title">🎯 Explore por categoria</h3>
-    <div class="filters-container" id="filtersContainer">
-      <button data-filter="all" class="filter-btn active">✨ Todos</button>
-      <button data-filter="datas" class="filter-btn">🎉 Datas Comemorativas</button>
-      <button data-filter="alfabetizacao" class="filter-btn">📖 Alfabetização</button>
-      <button data-filter="kits" class="filter-btn">🏆 Kits Premium</button>
-    </div>
+<!-- SITE PRINCIPAL -->
+<main class="main-site" id="mainSite">
+  <div class="hero">
+    <h2>📚 Materiais Pedagógicos</h2>
+    <p style="color: #8B6B4D;">Clique em "Ver opções" para ver as amostras</p>
   </div>
-
-  <!-- ============================================
-       🛍️ PRODUTOS
-       ============================================ -->
-  <section id="products" class="products-section">
-    <div class="products-grid" id="productsGrid"></div>
-  </section>
-
-  <!-- ============================================
-       👩‍🏫 SOBRE A PEDAGOGA
-       ============================================ -->
-  <div class="about-teacher">
-    <div class="teacher-card">
-      <div class="teacher-avatar">👩‍🏫✨</div>
-      <h3>Cleisiane Barreto - Pedagoga</h3>
-      <p>Crio materiais pedagógicos com muito carinho para ajudar educadores a terem aulas mais dinâmicas, criativas e produtivas. Cada arquivo é pensado para facilitar o dia a dia em sala de aula.</p>
-      <p class="teacher-signature">"Ensinar é transformar vidas, um material de cada vez."</p>
-    </div>
-  </div>
-
-  <!-- ============================================
-       ⭐ BENEFÍCIOS
-       ============================================ -->
-  <section id="benefits" class="benefits-section">
-    <h3 class="benefits-title">✨ Por que escolher meus materiais?</h3>
-    <div class="benefits-grid">
-      <div class="benefit-card">
-        <div class="benefit-icon">🎨</div>
-        <h4>Design Colorido</h4>
-        <p>Materiais que encantam e motivam os alunos</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">🎮</div>
-        <h4>Aprendizagem Lúdica</h4>
-        <p>Aprender brincando é mais divertido e eficaz</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">📚</div>
-        <h4>Alinhado à BNCC</h4>
-        <p>Todos os materiais seguem a Base Nacional Comum</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">🔒</div>
-        <h4>Conteúdo Protegido</h4>
-        <p>Imagens protegidas contra cópia</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       📞 CTA
-       ============================================ -->
-  <section id="contact" class="cta-section">
-    <h3>🚀 Pronto para transformar suas aulas?</h3>
-    <p>Adquira já meus materiais pedagógicos e torne suas aulas mais divertidas!</p>
-    <div class="cta-buttons">
-      <a href="https://wa.me/qr/QMLMG265QVDKE1" class="cta-whats">💬 Falar com a Pedagoga</a>
-      <a href="mailto:cleisiane@pedagoart.com" class="cta-email">📧 Enviar Email</a>
-    </div>
-  </section>
+  <div class="products-grid" id="productsGrid"></div>
 </main>
 
-<!-- ============================================
-     🦶 FOOTER
-     ============================================ -->
-<footer class="footer">
-  <p>© 2026 Cleisiane Barreto • PedagoArt Kids Store</p>
-  <p style="font-size: 0.7rem; margin-top: 0.5rem;">✨ Materiais pedagógicos criados com carinho para educadores ✨</p>
-  <div class="protection-notice">🔒 Todo o conteúdo deste site é protegido. As imagens são apenas para visualização.</div>
-</footer>
-
-<!-- ============================================
-     💬 WHATSAPP FLUTUANTE
-     ============================================ -->
-<div class="whatsapp-float">
-  <a href="https://wa.me/qr/QMLMG265QVDKE1" target="_blank">💬</a>
-</div>
-
-<!-- ============================================
-     🎫 MODAL GALERIA
-     ============================================ -->
-<div id="modalGallery" class="modal-gallery">
-  <div class="modal-gallery-content">
-    <div id="modalGalleryContent"></div>
-    <button class="modal-close-gallery" onclick="closeModalGallery()" style="background:none; border:none; color:var(--cor-texto); margin-top:1rem; cursor:pointer;">Fechar</button>
+<!-- MODAL DE LOGIN -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <h2>🔒 Acesso Restrito</h2>
+    <p>Digite a senha para acessar o painel</p>
+    <input type="password" id="adminPassword" placeholder="Digite a senha">
+    <button onclick="checkLogin()">Entrar</button>
+    <button onclick="closeLoginModal()" style="background:#ccc; margin-top:0.5rem;">Cancelar</button>
   </div>
 </div>
 
-<!-- ============================================
-     🖼️ MODAL ZOOM
-     ============================================ -->
-<div id="modalZoom" class="modal-zoom" onclick="closeZoom()">
-  <button class="close-zoom" onclick="closeZoom()">✕</button>
-  <img id="zoomImage" src="" alt="Visualização ampliada">
+<!-- PAINEL ADMIN -->
+<div id="adminPanel" class="admin-panel">
+  <div class="admin-header">
+    <h2>🛠️ Painel do Proprietário</h2>
+    <div>
+      <button class="btn-add" onclick="showAddForm()">➕ Adicionar Produto</button>
+      <button class="btn-site" onclick="closeAdminPanel()">🌐 Ver Site</button>
+    </div>
+  </div>
+
+  <div id="productForm" class="form-produto">
+    <h3 id="formTitle">➕ Adicionar Produto</h3>
+    <input type="hidden" id="productId">
+    
+    <div class="form-group">
+      <label>📌 Título</label>
+      <input type="text" id="prodTitle" placeholder="Ex: 🎉 Datas Comemorativas">
+    </div>
+    
+    <div class="form-group">
+      <label>📝 Descrição</label>
+      <textarea id="prodDescription" rows="3" placeholder="Descreva o produto..."></textarea>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label>💰 Preço do Kit</label>
+        <input type="text" id="prodPrice" placeholder="Ex: R$ 19,90">
+      </div>
+      <div class="form-group">
+        <label>📂 Categoria</label>
+        <select id="prodCategory">
+          <option value="datas">🎉 Datas Comemorativas</option>
+          <option value="alfabetizacao">📖 Alfabetização</option>
+          <option value="kits">🏆 Kits Premium</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label>🖼️ URL da Imagem de Capa</label>
+      <input type="text" id="prodImage" placeholder="https://..." value="https://placehold.co/600x400/FFD93D/white?text=PedagoArt">
+      <small style="color:#888;">Use imagens do site: https://placehold.co/ ou faça upload no Imgur</small>
+    </div>
+    
+    <div class="form-group">
+      <label>🖼️ Amostras do Produto</label>
+      <div id="imagesList"></div>
+      <div class="add-image-input">
+        <input type="text" id="newImageUrl" placeholder="URL da imagem">
+        <input type="text" id="newImageCaption" placeholder="Legenda" style="width: 40%;">
+        <input type="text" id="newImagePrice" placeholder="Preço" style="width: 30%;" value="R$ 4,90">
+        <button onclick="addImageToList()" style="background: var(--azul-ceu); border:none; border-radius:1rem; padding:0 1rem;">➕</button>
+      </div>
+    </div>
+    
+    <div style="margin-top: 1rem;">
+      <button class="btn-salvar" onclick="saveProduct()">💾 Salvar</button>
+      <button class="btn-cancelar" onclick="hideForm()">Cancelar</button>
+    </div>
+  </div>
+
+  <h3>📦 Seus Produtos</h3>
+  <div id="adminProductsList" class="admin-products"></div>
 </div>
 
 <script>
-  // ============================================
-  // 🛡️ PROTEÇÃO DE IMAGENS
-  // ============================================
-  document.querySelectorAll('img').forEach(img => {
-    img.addEventListener('contextmenu', (e) => {
-      e.preventDefault();
-      return false;
-    });
-  });
+  // SENHA DO ADMIN (VOCÊ PODE MUDAR)
+  const ADMIN_PASSWORD = "admin123";
   
-  window.addEventListener('dragstart', (e) => {
-    if (e.target.tagName === 'IMG') {
-      e.preventDefault();
-      return false;
-    }
-  });
-  
-  document.addEventListener('keydown', (e) => {
-    if (e.ctrlKey && e.key === 's') {
-      e.preventDefault();
-      alert('🔒 Salvamento não permitido para proteger o conteúdo.');
-      return false;
-    }
-    if (e.ctrlKey && e.key === 'u') {
-      e.preventDefault();
-      alert('🔒 Visualização do código fonte não permitida.');
-      return false;
-    }
-    if (e.ctrlKey && e.shiftKey && e.key === 'I') {
-      e.preventDefault();
-      alert('🔒 Ferramentas bloqueadas para proteger o conteúdo.');
-      return false;
-    }
-    if (e.key === 'F12') {
-      e.preventDefault();
-      alert('🔒 Ferramentas bloqueadas para proteger o conteúdo.');
-      return false;
-    }
-  });
+  let products = [];
 
   // ============================================
-  // 📦 PRODUTOS
+  // CARREGAR PRODUTOS
   // ============================================
-  const products = [
-    {
-      id: 1,
-      title: "🎉 Datas Comemorativas",
-      description: "Kit completo com atividades para todas as datas comemorativas do ano letivo. Colorido e divertido!",
-      price: "R$ 19,90",
-      image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=900&q=80",
-      category: "datas",
-      previewImages: [
-        { url: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=500&q=80", caption: "🎭 Carnaval", price: "R$ 3,90" },
-        { url: "https://images.unsplash.com/photo-1542393545-10f5cde2c810?auto=format&fit=crop&w=500&q=80", caption: "🐰 Páscoa", price: "R$ 4,90" },
-        { url: "https://images.unsplash.com/photo-1513151233558-860c539d9f5b?auto=format&fit=crop&w=500&q=80", caption: "🌽 Festa Junina", price: "R$ 4,90" },
-        { url: "https://images.unsplash.com/photo-1513885535751-8b923cebd345?auto=format&fit=crop&w=500&q=80", caption: "💐 Dia das Mães", price: "R$ 3,90" },
-        { url: "https://images.unsplash.com/photo-1556741533-6e6a3bd8e341?auto=format&fit=crop&w=500&q=80", caption: "🎄 Natal", price: "R$ 4,90" }
-      ]
-    },
-    {
-      id: 2,
-      title: "📖 Alfabetização Completa",
-      description: "Atividades de leitura, escrita e coordenação motora para 1º ao 3º ano. Mais de 200 páginas!",
-      price: "R$ 24,90",
-      image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
-      category: "alfabetizacao",
-      previewImages: [
-        { url: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=500&q=80", caption: "🔤 Alfabeto", price: "R$ 5,90" },
-        { url: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=500&q=80", caption: "✍️ Coordenação Motora", price: "R$ 5,90" },
-        { url: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&w=500&q=80", caption: "📝 Formação de Palavras", price: "R$ 6,90" },
-        { url: "https://images.unsplash.com/photo-1503694978374-8a2fa6f3e1df?auto=format&fit=crop&w=500&q=80", caption: "📖 Leitura e Interpretação", price: "R$ 6,90" }
-      ]
-    },
-    {
-      id: 3,
-      title: "🏆 Kits Premium Professor",
-      description: "Pacote completo com planners, calendários, fichas de avaliação e materiais exclusivos.",
-      price: "R$ 49,90",
-      image: "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=900&q=80",
-      category: "kits",
-      previewImages: [
-        { url: "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=500&q=80", caption: "📅 Planner do Professor", price: "R$ 12,90" },
-        { url: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=500&q=80", caption: "📊 Planejamento Anual", price: "R$ 15,90" },
-        { url: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=500&q=80", caption: "🗓️ Calendário Escolar", price: "R$ 7,90" },
-        { url: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=500&q=80", caption: "📋 Fichas de Avaliação", price: "R$ 9,90" }
-      ]
-    },
-    {
-      id: 4,
-      title: "🧮 Matemática Lúdica",
-      description: "Jogos e atividades matemáticas para aprender brincando. Números, tabuada e formas geométricas.",
-      price: "R$ 27,90",
-      image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=900&q=80",
-      category: "alfabetizacao",
-      previewImages: [
-        { url: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=500&q=80", caption: "🔢 Números e Quantidades", price: "R$ 5,90" },
-        { url: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?auto=format&fit=crop&w=500&q=80", caption: "➕ Adição e Subtração", price: "R$ 6,90" },
-        { url: "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?auto=format&fit=crop&w=500&q=80", caption: "✖️ Tabuada Divertida", price: "R$ 7,90" },
-        { url: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=500&q=80", caption: "🔺 Formas Geométricas", price: "R$ 5,90" }
-      ]
-    }
-  ];
-
-  // ============================================
-  // RENDERIZAR PRODUTOS
-  // ============================================
-  function renderProducts(filter = "all") {
-    const container = document.getElementById("productsGrid");
-    if (!container) return;
-
-    let filteredProducts = [];
-    if (filter === "all") {
-      filteredProducts = products;
+  function loadProducts() {
+    const saved = localStorage.getItem('pedagoart_products');
+    if (saved) {
+      products = JSON.parse(saved);
     } else {
-      filteredProducts = products.filter(p => p.category === filter);
+      // PRODUTOS PADRÃO COM IMAGENS SEGURAS
+      products = [
+        {
+          id: 1,
+          title: "🎉 Datas Comemorativas",
+          description: "Kit completo com atividades para todas as datas comemorativas do ano letivo. Carnaval, Páscoa, Festa Junina, Natal e muito mais!",
+          price: "R$ 19,90",
+          image: "https://placehold.co/600x400/FF6B9D/white?text=Datas+Comemorativas",
+          category: "datas",
+          images: [
+            { url: "https://placehold.co/400x300/FFD93D/white?text=Carnaval", caption: "Carnaval", price: "R$ 3,90" },
+            { url: "https://placehold.co/400x300/FF9B42/white?text=Páscoa", caption: "Páscoa", price: "R$ 4,90" },
+            { url: "https://placehold.co/400x300/A855F7/white?text=Festa+Junina", caption: "Festa Junina", price: "R$ 4,90" },
+            { url: "https://placehold.co/400x300/38BDF8/white?text=Natal", caption: "Natal", price: "R$ 4,90" }
+          ]
+        },
+        {
+          id: 2,
+          title: "📖 Alfabetização Completa",
+          description: "Atividades de leitura, escrita e coordenação motora para 1º ao 3º ano. Mais de 200 páginas!",
+          price: "R$ 24,90",
+          image: "https://placehold.co/600x400/4ADE80/white?text=Alfabetização",
+          category: "alfabetizacao",
+          images: [
+            { url: "https://placehold.co/400x300/FFD93D/white?text=Alfabeto", caption: "Alfabeto", price: "R$ 5,90" },
+            { url: "https://placehold.co/400x300/FF9B42/white?text=Coordenação+Motora", caption: "Coordenação Motora", price: "R$ 5,90" },
+            { url: "https://placehold.co/400x300/A855F7/white?text=Leitura", caption: "Leitura", price: "R$ 6,90" }
+          ]
+        },
+        {
+          id: 3,
+          title: "🏆 Kits Premium Professor",
+          description: "Pacote completo com planners, calendários, fichas de avaliação e materiais exclusivos.",
+          price: "R$ 49,90",
+          image: "https://placehold.co/600x400/FF6B9D/white?text=Kits+Premium",
+          category: "kits",
+          images: [
+            { url: "https://placehold.co/400x300/FFD93D/white?text=Planner", caption: "Planner", price: "R$ 12,90" },
+            { url: "https://placehold.co/400x300/FF9B42/white?text=Planejamento", caption: "Planejamento", price: "R$ 15,90" },
+            { url: "https://placehold.co/400x300/A855F7/white?text=Calendário", caption: "Calendário", price: "R$ 7,90" }
+          ]
+        },
+        {
+          id: 4,
+          title: "🧮 Matemática Lúdica",
+          description: "Jogos e atividades matemáticas para aprender brincando. Números, tabuada e formas geométricas.",
+          price: "R$ 27,90",
+          image: "https://placehold.co/600x400/38BDF8/white?text=Matemática",
+          category: "alfabetizacao",
+          images: [
+            { url: "https://placehold.co/400x300/FFD93D/white?text=Números", caption: "Números", price: "R$ 5,90" },
+            { url: "https://placehold.co/400x300/FF9B42/white?text=Adição", caption: "Adição", price: "R$ 6,90" },
+            { url: "https://placehold.co/400x300/A855F7/white?text=Tabuada", caption: "Tabuada", price: "R$ 7,90" }
+          ]
+        }
+      ];
+      saveProducts();
     }
+    renderSiteProducts();
+  }
 
-    if (filteredProducts.length === 0) {
-      container.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:3rem;">🔍 Nenhum produto encontrado para esta categoria.</div>`;
-      return;
-    }
+  function saveProducts() {
+    localStorage.setItem('pedagoart_products', JSON.stringify(products));
+  }
 
-    let html = "";
-    for (let product of filteredProducts) {
+  // ============================================
+  // RENDERIZAR SITE
+  // ============================================
+  function renderSiteProducts() {
+    const container = document.getElementById('productsGrid');
+    if (!container) return;
+    
+    let html = '';
+    for (let product of products) {
       html += `
         <div class="product-card">
-          <div class="product-badge">🎁 Completo</div>
-          <div class="product-image-container">
-            <img class="product-image" src="${product.image}" alt="${product.title}" loading="lazy" draggable="false" oncontextmenu="return false">
-          </div>
+          <img class="product-image" src="${product.image}" alt="${product.title}" onerror="this.src='https://placehold.co/600x400/FFD93D/white?text=Imagem'">
           <div class="product-info">
             <h3 class="product-title">${product.title}</h3>
-            <p class="product-description">${product.description}</p>
+            <p style="color:#8B6B4D; font-size:0.85rem;">${product.description.substring(0, 80)}...</p>
             <div class="product-price">💰 ${product.price}</div>
-            <button onclick="openModalGallery(${product.id})" class="btn-gallery">🛒 Ver opções (${product.previewImages.length} itens)</button>
+            <button class="btn-gallery" onclick="openProductOptions(${product.id})">🛒 Ver opções (${product.images.length} itens)</button>
+            <div class="gallery-preview" id="preview-${product.id}"></div>
           </div>
         </div>
       `;
     }
     container.innerHTML = html;
+    
+    // Pré-visualizações
+    for (let product of products) {
+      const previewDiv = document.getElementById(`preview-${product.id}`);
+      if (previewDiv && product.images.length > 0) {
+        let previewHtml = '';
+        for (let i = 0; i < Math.min(product.images.length, 4); i++) {
+          previewHtml += `<img src="${product.images[i].url}" onclick="openImageZoom('${product.images[i].url}')" onerror="this.src='https://placehold.co/100x100/FFD93D/white?text=Erro'">`;
+        }
+        previewDiv.innerHTML = previewHtml;
+      }
+    }
   }
 
   // ============================================
-  // FILTROS
+  // ABRIR OPÇÕES DO PRODUTO
   // ============================================
-  function setupFilters() {
-    const buttons = document.querySelectorAll('.filter-btn');
-    buttons.forEach(button => {
-      button.addEventListener('click', function() {
-        buttons.forEach(btn => btn.classList.remove('active'));
-        this.classList.add('active');
-        const filter = this.getAttribute('data-filter');
-        renderProducts(filter);
-      });
-    });
-  }
-
-  // ============================================
-  // MODAL GALERIA
-  // ============================================
-  function openModalGallery(productId) {
+  function openProductOptions(productId) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
-
-    let galleryHtml = `
-      <h2>📦 ${product.title}</h2>
-      <div class="modal-price">💰 ${product.price} - Kit Completo</div>
-      <p style="color: var(--cor-texto-claro); text-align: center; margin-bottom: 0.5rem;">Escolha como deseja comprar:</p>
-      
-      <a href="https://wa.me/qr/QMLMG265QVDKE1?text=Olá! Gostaria de comprar o KIT COMPLETO ${product.title} - ${product.price}" class="btn-buy-kit">🎁 Comprar Kit Completo (${product.previewImages.length} itens) - ${product.price}</a>
-      
-      <div class="divider">⭐ OU COMPRE INDIVIDUALMENTE ⭐</div>
-      
-      <div class="gallery-grid">
-    `;
-
-    for (let img of product.previewImages) {
-      galleryHtml += `
+    
+    const modalDiv = document.createElement('div');
+    modalDiv.className = 'modal-overlay';
+    modalDiv.onclick = (e) => { if (e.target === modalDiv) modalDiv.remove(); };
+    
+    let imagesHtml = '';
+    for (let img of product.images) {
+      imagesHtml += `
         <div class="gallery-item">
-          <img class="gallery-image" src="${img.url}" alt="${img.caption}" draggable="false" oncontextmenu="return false" onclick="openZoom('${img.url}')">
-          <div class="gallery-caption">${img.caption}</div>
-          <div class="gallery-price">💰 ${img.price}</div>
-          <div class="gallery-buttons">
-            <button onclick="openZoom('${img.url}')" class="btn-view-zoom">🔍 Ampliar</button>
-            <a href="https://wa.me/qr/QMLMG265QVDKE1?text=Olá! Gostaria de comprar: ${img.caption} - ${img.price}" class="btn-buy-single">🛒 Comprar</a>
+          <img src="${img.url}" onclick="openImageZoom('${img.url}')" onerror="this.src='https://placehold.co/400x300/FFD93D/white?text=Erro'">
+          <div style="padding:0.5rem; text-align:center; font-weight:bold;">${img.caption}</div>
+          <div style="padding:0.5rem; text-align:center; color:green; font-weight:bold;">💰 ${img.price}</div>
+          <div style="display:flex; gap:0.5rem; padding:0.5rem;">
+            <button onclick="openImageZoom('${img.url}')" style="flex:1; background:#38BDF8; border:none; border-radius:2rem; padding:0.5rem; cursor:pointer;">🔍 Ampliar</button>
+            <a href="https://wa.me/qr/QMLMG265QVDKE1?text=Olá! Gostaria de comprar: ${img.caption} - ${img.price}" style="flex:1; background:#25D366; color:white; text-align:center; text-decoration:none; border-radius:2rem; padding:0.5rem;">🛒 Comprar</a>
           </div>
         </div>
       `;
     }
-
-    galleryHtml += `</div>`;
-
-    document.getElementById("modalGalleryContent").innerHTML = galleryHtml;
-    document.getElementById("modalGallery").style.display = "flex";
-    document.body.style.overflow = "hidden";
+    
+    modalDiv.innerHTML = `
+      <div class="modal-box">
+        <h2>📦 ${product.title}</h2>
+        <div style="color:green; font-size:1.5rem; font-weight:bold;">💰 ${product.price} - Kit Completo</div>
+        <a href="https://wa.me/qr/QMLMG265QVDKE1?text=Olá! Gostaria de comprar o KIT COMPLETO ${product.title} - ${product.price}" style="display:block; background:#25D366; color:white; text-align:center; padding:1rem; border-radius:2rem; text-decoration:none; margin:1rem 0;">🎁 Comprar Kit Completo (${product.images.length} itens)</a>
+        <div style="text-align:center; margin:1rem 0;">⭐ OU COMPRE INDIVIDUALMENTE ⭐</div>
+        <div class="gallery-grid">${imagesHtml}</div>
+        <button class="close-modal" onclick="this.closest('.modal-overlay').remove()">Fechar</button>
+      </div>
+    `;
+    
+    document.body.appendChild(modalDiv);
   }
-
-  function closeModalGallery() {
-    document.getElementById("modalGallery").style.display = "none";
-    document.body.style.overflow = "auto";
+  
+  function openImageZoom(url) {
+    const zoomDiv = document.createElement('div');
+    zoomDiv.className = 'image-zoom';
+    zoomDiv.onclick = () => zoomDiv.remove();
+    zoomDiv.innerHTML = `
+      <img src="${url}" onerror="this.src='https://placehold.co/800x600/FFD93D/white?text=Erro+ao+carregar'">
+      <div style="position:absolute; top:20px; right:30px; color:white; font-size:2rem; cursor:pointer;">✕</div>
+    `;
+    document.body.appendChild(zoomDiv);
   }
 
   // ============================================
-  // ZOOM
+  // PAINEL ADMIN
   // ============================================
-  function openZoom(imageUrl) {
-    document.getElementById("zoomImage").src = imageUrl;
-    document.getElementById("modalZoom").style.display = "flex";
-    document.body.style.overflow = "hidden";
-  }
+  let imagesTemp = [];
 
-  function closeZoom() {
-    document.getElementById("modalZoom").style.display = "none";
-    document.body.style.overflow = "auto";
+  function openLoginModal() {
+    document.getElementById('loginModal').style.display = 'flex';
   }
-
-  // ============================================
-  // FECHAR MODAIS
-  // ============================================
-  window.onclick = function(event) {
-    if (event.target === document.getElementById('modalGallery')) {
-      closeModalGallery();
+  
+  function closeLoginModal() {
+    document.getElementById('loginModal').style.display = 'none';
+    document.getElementById('adminPassword').value = '';
+  }
+  
+  function checkLogin() {
+    const password = document.getElementById('adminPassword').value;
+    if (password === ADMIN_PASSWORD) {
+      closeLoginModal();
+      document.getElementById('mainSite').style.display = 'none';
+      document.getElementById('adminPanel').style.display = 'block';
+      renderAdminProducts();
+    } else {
+      alert('Senha incorreta! Use: admin123');
     }
-    if (event.target === document.getElementById('modalZoom')) {
-      closeZoom();
+  }
+  
+  function closeAdminPanel() {
+    document.getElementById('mainSite').style.display = 'block';
+    document.getElementById('adminPanel').style.display = 'none';
+    renderSiteProducts();
+  }
+  
+  function addImageToList() {
+    const url = document.getElementById('newImageUrl').value;
+    const caption = document.getElementById('newImageCaption').value;
+    const price = document.getElementById('newImagePrice').value;
+    
+    if (!url) {
+      alert('Digite a URL da imagem');
+      return;
+    }
+    
+    imagesTemp.push({ url, caption: caption || 'Amostra', price: price || 'R$ 4,90' });
+    renderImagesList();
+    
+    document.getElementById('newImageUrl').value = '';
+    document.getElementById('newImageCaption').value = '';
+    document.getElementById('newImagePrice').value = 'R$ 4,90';
+  }
+  
+  function removeImageTemp(index) {
+    imagesTemp.splice(index, 1);
+    renderImagesList();
+  }
+  
+  function renderImagesList() {
+    const container = document.getElementById('imagesList');
+    if (!container) return;
+    
+    let html = '<div style="display:flex; flex-wrap:wrap; gap:0.5rem;">';
+    for (let i = 0; i < imagesTemp.length; i++) {
+      html += `
+        <div style="position:relative; width:80px;">
+          <img src="${imagesTemp[i].url}" style="width:100%; height:80px; object-fit:cover; border-radius:0.5rem;" onerror="this.src='https://placehold.co/100x100/FFD93D/white?text=Erro'">
+          <div style="font-size:10px; text-align:center;">${imagesTemp[i].caption}</div>
+          <div style="font-size:10px; text-align:center; color:green;">${imagesTemp[i].price}</div>
+          <button onclick="removeImageTemp(${i})" style="position:absolute; top:-5px; right:-5px; background:red; color:white; border:none; border-radius:50%; width:20px; height:20px; cursor:pointer;">✕</button>
+        </div>
+      `;
+    }
+    html += '</div>';
+    container.innerHTML = html;
+  }
+  
+  function showAddForm() {
+    document.getElementById('formTitle').innerText = '➕ Adicionar Produto';
+    document.getElementById('productId').value = '';
+    document.getElementById('prodTitle').value = '';
+    document.getElementById('prodDescription').value = '';
+    document.getElementById('prodPrice').value = '';
+    document.getElementById('prodCategory').value = 'datas';
+    document.getElementById('prodImage').value = 'https://placehold.co/600x400/FFD93D/white?text=Novo+Produto';
+    imagesTemp = [];
+    renderImagesList();
+    document.getElementById('productForm').style.display = 'block';
+  }
+  
+  function hideForm() {
+    document.getElementById('productForm').style.display = 'none';
+    imagesTemp = [];
+  }
+  
+  function editProduct(id) {
+    const product = products.find(p => p.id === id);
+    if (!product) return;
+    
+    document.getElementById('formTitle').innerText = '✏️ Editar Produto';
+    document.getElementById('productId').value = product.id;
+    document.getElementById('prodTitle').value = product.title;
+    document.getElementById('prodDescription').value = product.description;
+    document.getElementById('prodPrice').value = product.price;
+    document.getElementById('prodCategory').value = product.category;
+    document.getElementById('prodImage').value = product.image;
+    imagesTemp = [...product.images];
+    renderImagesList();
+    document.getElementById('productForm').style.display = 'block';
+  }
+  
+  function saveProduct() {
+    const id = document.getElementById('productId').value;
+    const title = document.getElementById('prodTitle').value;
+    const description = document.getElementById('prodDescription').value;
+    const price = document.getElementById('prodPrice').value;
+    const category = document.getElementById('prodCategory').value;
+    const image = document.getElementById('prodImage').value;
+    
+    if (!title || !description || !price || !image) {
+      alert('Preencha todos os campos obrigatórios!');
+      return;
+    }
+    
+    if (id) {
+      const index = products.findIndex(p => p.id == id);
+      if (index !== -1) {
+        products[index] = {
+          ...products[index],
+          title, description, price, category, image,
+          images: imagesTemp
+        };
+      }
+    } else {
+      const newId = Math.max(...products.map(p => p.id), 0) + 1;
+      products.push({
+        id: newId,
+        title,
+        description,
+        price,
+        category,
+        image,
+        images: imagesTemp
+      });
+    }
+    
+    saveProducts();
+    renderAdminProducts();
+    hideForm();
+    alert('Produto salvo com sucesso!');
+  }
+  
+  function deleteProduct(id) {
+    if (confirm('Tem certeza que deseja excluir este produto?')) {
+      products = products.filter(p => p.id !== id);
+      saveProducts();
+      renderAdminProducts();
     }
   }
+  
+  function renderAdminProducts() {
+    const container = document.getElementById('adminProductsList');
+    if (!container) return;
+    
+    let html = '';
+    for (let product of products) {
+      html += `
+        <div class="admin-product-card">
+          <img src="${product.image}" onerror="this.src='https://placehold.co/600x400/FFD93D/white?text=Erro'">
+          <h4>${product.title}</h4>
+          <p style="font-size:0.8rem;">${product.description.substring(0, 60)}...</p>
+          <p><strong>💰 ${product.price}</strong></p>
+          <div class="images-list">
+      `;
+      
+      for (let img of product.images) {
+        html += `
+          <div class="image-item">
+            <img src="${img.url}" onerror="this.src='https://placehold.co/100x100/FFD93D/white?text=Erro'">
+          </div>
+        `;
+      }
+      
+      html += `
+          </div>
+          <div class="admin-product-actions">
+            <button class="btn-edit" onclick="editProduct(${product.id})">✏️ Editar</button>
+            <button class="btn-delete" onclick="deleteProduct(${product.id})">🗑️ Excluir</button>
+          </div>
+        </div>
+      `;
+    }
+    
+    container.innerHTML = html;
+  }
 
-  // ============================================
-  // INICIALIZAÇÃO
-  // ============================================
-  document.addEventListener('DOMContentLoaded', () => {
-    renderProducts("all");
-    setupFilters();
-  });
+  // INICIALIZAR
+  loadProducts();
 </script>
 </body>
 </html>
