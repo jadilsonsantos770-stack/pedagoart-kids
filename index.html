@@ -497,11 +497,12 @@
     .product-price {
       font-size: 1.8rem;
       font-weight: 800;
-      background: linear-gradient(135deg, var(--sucesso), #34d399);
+      background: linear-gradient(135deg, #10b981, #34d399);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       margin-bottom: 1.5rem;
+      display: block;
     }
 
     .product-buttons {
@@ -522,6 +523,7 @@
       cursor: pointer;
       border: none;
       font-family: inherit;
+      display: block;
     }
 
     .btn-buy:hover {
@@ -539,6 +541,7 @@
       text-decoration: none;
       font-weight: 600;
       transition: var(--transicao);
+      display: block;
     }
 
     .btn-whats-product:hover {
@@ -908,11 +911,11 @@
       <p>Materiais exclusivos para educação infantil e ensino fundamental I. Baixe imediatamente após a compra.</p>
       <div class="hero-stats">
         <div class="stat">
-          <div class="stat-number">+1.000</div>
+          <div class="stat-number">+100</div>
           <div class="stat-label">Arquivos</div>
         </div>
         <div class="stat">
-          <div class="stat-number">⭐ 4.9</div>
+          <div class="stat-number">⭐ 5.0</div>
           <div class="stat-label">Avaliações</div>
         </div>
       </div>
@@ -945,7 +948,7 @@
   </div>
 
   <!-- ============================================
-       🛍️ PRODUTOS
+       🛍️ CATÁLOGO DE PRODUTOS
        ============================================ -->
   <section id="products" class="products-section">
     <div class="products-grid" id="productsGrid"></div>
@@ -1000,7 +1003,7 @@
     <p>Adquira já meus materiais pedagógicos premium e revolucione sua rotina escolar</p>
     <div class="cta-buttons">
       <a href="https://wa.me/qr/QMLMG265QVDKE1" class="cta-whats">💬 Falar com a Pedagoga</a>
-      <a href="mailto:contato@pedagoart.com" class="cta-email">📧 Enviar Email</a>
+      <a href="mailto:cleisiane@pedagoart.com" class="cta-email">📧 Enviar Email</a>
     </div>
   </section>
 </main>
@@ -1035,11 +1038,157 @@
 
 <script>
   // ============================================
-  // 📦 BANCO DE PRODUTOS COM PREÇOS AJUSTADOS
-  // MÍNIMO DE R$ 14,90
+  // 📦 BANCO DE PRODUTOS COM PREÇOS VISÍVEIS
+  // VALOR MÍNIMO: R$ 14,90
   // ============================================
   const products = [
     {
       id: 1,
       title: "🎉 Datas Comemorativas",
-      description: "Artes, painéis, le
+      description: "Artes, painéis, lembrancinhas e murais temáticos para todo o calendário escolar. Do 1º ao 5º ano.",
+      price: "R$ 14,90",
+      image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=900&q=80",
+      category: "datas"
+    },
+    {
+      id: 2,
+      title: "🎨 Artes Sazonais",
+      description: "Murais coloridos, lembrancinhas e artes temáticas para todas as épocas do ano.",
+      price: "R$ 14,90",
+      image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=900&q=80",
+      category: "datas"
+    },
+    {
+      id: 3,
+      title: "📖 Alfabetização Completa",
+      description: "Atividades de leitura, escrita, coordenação motora e desenvolvimento infantil. 1º ao 3º ano.",
+      price: "R$ 24,90",
+      image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
+      category: "alfabetizacao"
+    },
+    {
+      id: 4,
+      title: "🧮 Matemática Lúdica",
+      description: "Jogos e atividades para aprender matemática brincando. 1º ao 5º ano.",
+      price: "R$ 27,90",
+      image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=900&q=80",
+      category: "alfabetizacao"
+    },
+    {
+      id: 5,
+      title: "🏆 Kits Premium",
+      description: "Pacotes completos com jogos, planners, atividades e materiais exclusivos. 1º ao 5º ano.",
+      price: "R$ 49,90",
+      image: "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=900&q=80",
+      category: "kits"
+    },
+    {
+      id: 6,
+      title: "📚 Planejamento BNCC",
+      description: "Planejamento anual completo com habilidades e avaliações para todos os anos.",
+      price: "R$ 59,90",
+      image: "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=900&q=80",
+      category: "kits"
+    }
+  ];
+
+  // ============================================
+  // 🎨 FUNÇÃO PARA RENDERIZAR PRODUTOS
+  // ============================================
+  function renderProducts(filter = "all") {
+    const container = document.getElementById("productsGrid");
+    if (!container) return;
+
+    let filteredProducts = [];
+    if (filter === "all") {
+      filteredProducts = products;
+    } else {
+      filteredProducts = products.filter(p => p.category === filter);
+    }
+
+    if (filteredProducts.length === 0) {
+      container.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:3rem; color:#94a3b8;">🔍 Nenhum produto encontrado para esta categoria.</div>`;
+      return;
+    }
+
+    let html = "";
+    for (let product of filteredProducts) {
+      html += `
+        <div class="product-card">
+          <img class="product-image" src="${product.image}" alt="${product.title}" loading="lazy">
+          <div class="product-info">
+            <h3 class="product-title">${product.title}</h3>
+            <p class="product-description">${product.description}</p>
+            <div class="product-price">💰 ${product.price}</div>
+            <div class="product-buttons">
+              <button onclick="openModal('${product.title}', '${product.price}')" class="btn-buy">🛒 Ver Produto</button>
+              <a href="https://wa.me/qr/QMLMG265QVDKE1?text=Olá! Gostaria de comprar ${product.title} - ${product.price}" class="btn-whats-product">💬 Comprar via WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+    container.innerHTML = html;
+  }
+
+  // ============================================
+  // 🔍 FUNÇÃO PARA FILTROS
+  // ============================================
+  function setupFilters() {
+    const buttons = document.querySelectorAll('.filter-btn');
+    buttons.forEach(button => {
+      button.addEventListener('click', function() {
+        buttons.forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+        const filter = this.getAttribute('data-filter');
+        renderProducts(filter);
+      });
+    });
+  }
+
+  // ============================================
+  // 🎫 FUNÇÕES DO MODAL
+  // ============================================
+  function openModal(productName, productPrice) {
+    const modal = document.getElementById('modal');
+    const modalContent = modal.querySelector('.modal-content');
+    
+    // Atualiza o conteúdo do modal com o produto selecionado
+    modalContent.innerHTML = `
+      <div style="font-size: 4rem;">🎉</div>
+      <h3 style="color: white; margin: 1rem 0;">${productName}</h3>
+      <p style="color: #94a3b8; margin-bottom: 0.5rem;">Valor: <strong style="color: #10b981; font-size: 1.5rem;">${productPrice}</strong></p>
+      <p style="color: #94a3b8; margin-bottom: 1.5rem;">Complete sua compra pelo WhatsApp para receber o link de download imediato.</p>
+      <a href="https://wa.me/qr/QMLMG265QVDKE1?text=Olá! Gostaria de comprar ${productName} - ${productPrice}" class="btn-whatsapp" style="display: inline-block; padding: 0.8rem 2rem;">💬 Falar com a Pedagoga</a>
+      <br>
+      <button class="modal-close" onclick="closeModal()" style="background: none; border: none; color: #64748b; cursor: pointer; margin-top: 1rem;">Fechar</button>
+    `;
+    
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('modal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+
+  // Fechar modal clicando fora
+  window.onclick = function(event) {
+    const modal = document.getElementById('modal');
+    if (event.target === modal) {
+      closeModal();
+    }
+  }
+
+  // ============================================
+  // 🚀 INICIALIZAÇÃO
+  // ============================================
+  document.addEventListener('DOMContentLoaded', () => {
+    renderProducts("all");
+    setupFilters();
+  });
+</script>
+</body>
+</html>
